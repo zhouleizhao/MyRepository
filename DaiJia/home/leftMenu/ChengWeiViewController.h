@@ -11,4 +11,7 @@
 @interface ChengWeiViewController : UIViewController
 @property (nonatomic,strong)NSString * name;
 @property (nonatomic,strong)NSString * sex;
+@property (nonatomic,assign)BOOL isPerfectInfo;
+
+@property (nonatomic,copy) void(^completeBlock)();
 @end

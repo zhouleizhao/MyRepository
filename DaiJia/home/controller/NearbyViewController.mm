@@ -49,6 +49,8 @@
 @property (nonatomic,strong)DCDataPickerView * dataPickerView;
 @property (nonatomic,strong)NSString * yuYueDate;
 @property (nonatomic,assign)CLLocationCoordinate2D daiJiaoLocation;//代叫起点经纬度
+@property (weak, nonatomic) IBOutlet UIView *twoItemsView;
+@property (weak, nonatomic) IBOutlet UIView *threeItemsView;
 @end
 
 @implementation NearbyViewController
@@ -263,6 +265,16 @@
     [_mapView viewWillAppear];
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     [BMKMapView enableCustomMapStyle:enableCustomMap];
+    
+    //处理代叫
+    GETUSERINFO
+    if ([userInfo[@"isNo"] isEqualToString:@"0"]) {
+        self.twoItemsView.hidden = false;
+        self.threeItemsView.hidden = true;
+    }else{
+        self.twoItemsView.hidden = true;
+        self.threeItemsView.hidden = false;
+    }
 }
 - (void)setNav{
     //self.title = @"首页";

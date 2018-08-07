@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="nameTextField" destination="A0C-bB-l0Y" id="31K-ur-7Bt"/>
                 <outlet property="nanButton" destination="U2g-XI-uO7" id="9Se-L8-hwi"/>
+                <outlet property="nextBtn" destination="R7C-s5-5QR" id="bSL-k3-9f1"/>
                 <outlet property="nvButton" destination="R7o-za-6qr" id="h9G-J6-pqm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,19 +35,19 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yt-Rn-DAp">
-                            <rect key="frame" x="10" y="0.0" width="35" height="39.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="10" y="0.0" width="31" height="39.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmh-Xb-ICg">
-                            <rect key="frame" x="10" y="40.5" width="35" height="39.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="10" y="40.5" width="31" height="39.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入姓名" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A0C-bB-l0Y">
-                            <rect key="frame" x="65" y="0.0" width="300" height="39.5"/>
+                            <rect key="frame" x="61" y="0.0" width="304" height="39.5"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -98,10 +99,27 @@
                         <constraint firstAttribute="bottom" secondItem="U2g-XI-uO7" secondAttribute="bottom" id="vdh-Zu-Gcs"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7C-s5-5QR">
+                    <rect key="frame" x="25" y="587" width="325" height="40"/>
+                    <color key="backgroundColor" red="0.24313725489999999" green="0.23921568630000001" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="sZf-mg-PDr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="下一步"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ud4-hL-fQ4" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="5M5-x0-m80"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="R7C-s5-5QR" secondAttribute="bottom" constant="40" id="7Me-lL-wFc"/>
+                <constraint firstItem="R7C-s5-5QR" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="PuQ-sm-ou7"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="R7C-s5-5QR" secondAttribute="trailing" constant="25" id="e51-K9-dtC"/>
                 <constraint firstItem="ud4-hL-fQ4" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="sgZ-FS-AYd"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="ud4-hL-fQ4" secondAttribute="trailing" id="xj1-jD-Pxj"/>
             </constraints>

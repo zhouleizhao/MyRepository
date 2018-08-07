@@ -13,7 +13,7 @@
 #import "OrderViewController.h"//我的订单
 #import "PreferentialViewController.h"//我的钱包
 #import "MyAccountViewController.h"//我的账户
-#import "ApplyDaiJiaoViewController.h"//申请代叫
+//#import "ApplyDaiJiaoViewController.h"//申请代叫
 //支付密码
 @interface LeftSortViewController ()<UITableViewDataSource,UITableViewDelegate>{
     LeftHeaderView * _headView;
@@ -107,6 +107,11 @@
         //未申请代叫
         cell.textLabel.text = @"申请代叫";
         cell.imageView.image = [UIImage imageNamed:@"account"];
+        
+        GETUSERINFO
+        if ([userInfo[@"isNo"] isEqualToString:@"1"]) {
+            cell.textLabel.text = @"修改代叫地址";
+        }
     }
     
     return cell;
@@ -197,6 +202,12 @@
         
     }else if (indexPath.row == 4){
         ApplyDaiJiaoViewController * djvc = [ApplyDaiJiaoViewController new];
+        GETUSERINFO
+        if ([userInfo[@"isNo"] isEqualToString:@"0"]) {
+            djvc.title = @"申请代叫";
+        }else{
+            djvc.title = @"修改代叫地址";
+        }
         [tempAppDelegate.mainNC pushViewController:djvc animated:NO];
     }
 

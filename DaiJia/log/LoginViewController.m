@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "ChengWeiViewController.h"
 
 @interface LoginViewController ()<UITextFieldDelegate,UIWebViewDelegate>
 @property (nonatomic,strong)UITextField * phoneTextField;
@@ -153,10 +154,29 @@
         NSLog(@"%@登录成功返回:%@",task.currentRequest,responseObject);
         hud.hidden = YES;
         if ([[NSString stringWithFormat:@"%@",responseObject[@"status"]] isEqualToString:@"1"]) {
-            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"data"] forKey:@"userInfo"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            [MBProgressHUD showSuccess:@"登录成功" toView:self.view];
-            [self.navigationController popViewControllerAnimated:YES];
+            
+            if (((NSString *)responseObject[@"data"][@"registerName"]).length == 0) {
+                
+                [MBProgressHUD showSuccess:@"登录成功，请完善资料！" toView:self.view];
+                
+                ChengWeiViewController * cwvc = [[ChengWeiViewController alloc] init];
+                cwvc.isPerfectInfo = true;
+                cwvc.completeBlock = ^{
+
+                    [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"data"] forKey:@"userInfo"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    
+                    [self.navigationController popViewControllerAnimated:YES];
+                };
+                
+                [self.navigationController pushViewController:cwvc animated:true];
+            }else{
+                
+                [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"data"] forKey:@"userInfo"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [MBProgressHUD showSuccess:@"登录成功" toView:self.view];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
         }else{
             [MBProgressHUD showError:responseObject[@"msg"] toView:self.view];
         }

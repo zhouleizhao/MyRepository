@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIButton *nanButton;
 @property (weak, nonatomic) IBOutlet UIButton *nvButton;
+@property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 
 @end
 
@@ -21,30 +22,62 @@
     [super viewDidLoad];
     self.title = @"您的称谓";
     self.view.backgroundColor = CONTROLLERCOLOR
-    UIView * rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    UIButton * rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightButton setTitle:@"保存" forState:UIControlStateNormal];
-    [rightButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(rightClick) forControlEvents:UIControlEventTouchUpInside];
-    rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
-    rightButton.frame = CGRectMake(0, 0, 44, 44);
-    [rightView addSubview:rightButton];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightView];
-    self.nameTextField.delegate = self;
-    self.nameTextField.text = self.name;
-    if ([self.sex isEqualToString:@"0"]) {
-        self.nanButton.selected = YES;
-    }else if ([self.sex isEqualToString:@"1"]){
-        self.nvButton.selected = YES;
+    
+    if (!_isPerfectInfo) {
+        UIView * rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        UIButton * rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [rightButton setTitle:@"保存" forState:UIControlStateNormal];
+        [rightButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [rightButton addTarget:self action:@selector(nextBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+        rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
+        rightButton.frame = CGRectMake(0, 0, 44, 44);
+        [rightView addSubview:rightButton];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightView];
+        
+        self.nextBtn.hidden = true;
+        
+        self.nameTextField.delegate = self;
+        self.nameTextField.text = self.name;
+        if ([self.sex isEqualToString:@"0"]) {
+            self.nanButton.selected = YES;
+        }else if ([self.sex isEqualToString:@"1"]){
+            self.nvButton.selected = YES;
+        }else{
+            self.nanButton.selected = YES;
+        }
     }else{
-        self.nanButton.selected = YES;
+        
+        self.nextBtn.hidden = false;
+        [self.nextBtn addTarget:self action:@selector(nextBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+        
+        self.nameTextField.delegate = self;
+        self.nanButton.selected = false;
+        self.nvButton.selected = false;
     }
+
     // Do any additional setup after loading the view from its nib.
+}
+- (void)nextBtnClicked{
+    
+    if (self.nanButton.selected == false && self.nvButton.selected == false) {
+        
+        [App_ZLZ_Helper showErrorMessageAlertAutoGone:@"请选择性别！"];
+        return;
+    }
+    
+    if (self.nameTextField.text.length == 0) {
+        
+        [App_ZLZ_Helper showErrorMessageAlertAutoGone:@"请输入名字！"];
+        return;
+    }
+    
+    [self rightClick];
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     return [textField resignFirstResponder];
 }
 - (void)rightClick{
+    
     NSString * str = @"";
     if (self.nanButton.selected) {
         str = @"0";
@@ -52,9 +85,16 @@
         str = @"1";
     }
     [App_ZLZ_Helper sendDataToServerUseUrl:@"user/info/modify" dataDict:@{@"name":self.nameTextField.text,@"sex":str} type:RequestType_Post loadingTitle:@"正在提交..." sucessTitle:@"" sucessBlock:^(NSDictionary *) {
-        [CommonAlertView showAlertWithMessage:@"保存成功" AndTitle:@"温馨提示" Action:^{
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
+        
+        if (self.completeBlock != nil) {
+            [self completeBlock];
+        }
+        
+        if (!self.isPerfectInfo) {
+            [CommonAlertView showAlertWithMessage:@"保存成功" AndTitle:@"温馨提示" Action:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        }
     } failedBlock:^(NSError *) {
         
     }];
