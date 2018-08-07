@@ -1,0 +1,27 @@
+//
+//  SearchSubView.h
+//  QuickDog
+//
+//  Created by MyApple on 11/05/2018.
+//  Copyright © 2018 kunya. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <BaiduMapAPI_Search/BMKSearchComponent.h>
+@protocol SearchSubViewDelegate <NSObject>
+- (void)selectedRow_SearchSubViewDelegate:(BMKPoiInfo *)point;
+- (void)close_SearchSubViewDelegate;
+@end
+
+@interface SearchSubView : UIView
+
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
+@property (nonatomic,retain) NSArray * dataArr;
+@property (nonatomic,assign) id<SearchSubViewDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UITextField *keyTextField;
+@property (weak, nonatomic) IBOutlet UITableView *contentTableView;
+@property (weak, nonatomic) IBOutlet UILabel *currentLocationLabel;
+@property (weak, nonatomic) IBOutlet UIButton *changeLocationBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstarint;
+
+@end
