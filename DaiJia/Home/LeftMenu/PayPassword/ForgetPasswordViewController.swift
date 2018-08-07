@@ -1,0 +1,174 @@
+//
+//  ForgetPasswordViewController.swift
+//  DesignateDriver
+//
+//  Created by MyApple on 06/07/2018.
+//  Copyright © 2018 kunya. All rights reserved.
+//
+
+import UIKit
+
+class ForgetPasswordViewController: UIViewController,UITextFieldDelegate {
+
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var rePasswordTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var verifyCodeTextField: UITextField!
+    @IBOutlet weak var sendVerifyBtn: UIButton!
+    @IBOutlet weak var topConstraintLayout: NSLayoutConstraint!
+    @IBOutlet weak var passwordViewTopConstraint: NSLayoutConstraint!
+    
+    var isForgetPassword:Bool = true
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        self.title = "找回密码"
+        if !isForgetPassword {
+            self.title = "忘记密码"
+            self.passwordTextField.placeholder = "请输入支付密码"
+            self.rePasswordTextField.placeholder = "请再次输入支付密码"
+            self.phoneTextField.superview?.isHidden = true
+            self.passwordViewTopConstraint.constant = -43
+            
+            self.passwordTextField.keyboardType = .phonePad
+            self.rePasswordTextField.keyboardType = .phonePad
+        }
+        verifyCodeTextField.delegate = self
+    }
+    @IBAction func confirmBtnClicked(_ sender: Any) {
+        if isForgetPassword {
+            if phoneTextField.text?.count == 0 {
+                App_ZLZ_Helper.showErrorMessageAlertAutoGone("请输入手机号！")
+                return
+            }
+        }
+        if passwordTextField.text?.count == 0 {
+            App_ZLZ_Helper.showErrorMessageAlertAutoGone("请输入密码！")
+            return
+        }
+        if rePasswordTextField.text?.count == 0 {
+            App_ZLZ_Helper.showErrorMessageAlertAutoGone("请输入确认密码！")
+            return
+        }
+        if passwordTextField.text! != rePasswordTextField.text! {
+            App_ZLZ_Helper.showErrorMessageAlertAutoGone("两次密码输入不一致！")
+            return
+        }
+        if verifyCodeTextField.text?.count == 0 {
+            App_ZLZ_Helper.showErrorMessageAlertAutoGone("请输入验证码！")
+            return
+        }
+
+        if !isForgetPassword {
+            
+            if passwordTextField.text?.count != 6 {
+                
+                App_ZLZ_Helper.showErrorMessageAlertAutoGone("支付密码必须是六位！")
+                return
+            }
+            
+            App_ZLZ_Helper.sendData(toServerUseUrl: "user/transPwd/reset", dataDict: ["newPwd":passwordTextField.text!, "verifyCode":verifyCodeTextField.text!], type: RequestType_Post, loadingTitle: "重置密码中...", sucessTitle: "支付密码重置成功！", sucessBlock: { (responseObj) in
+                self.navigationController?.popViewController(animated: true)
+            }) { (error) in
+                
+            }
+            
+            return
+        }
+        
+        App_ZLZ_Helper.sendData(toServerUseUrl: "entrance/retrievePwd", dataDict: ["phone":phoneTextField.text!, "password":passwordTextField.text!, "verifyCode":verifyCodeTextField.text!], type: RequestType_Post, loadingTitle: "重置密码中...", sucessTitle: "密码重置成功，请重新登录！", sucessBlock: { (responseObj) in
+            self.navigationController?.popViewController(animated: true)
+        }) { (error) in
+            
+        }
+    }
+    
+    //MARK: - 发送验证码
+    var totolSeconds = 120
+    var timer:Timer?
+    @IBAction func sendVerifyBtnClicked(_ sender: Any) {
+        self.phoneTextField.resignFirstResponder()
+        self.verifyCodeTextField.resignFirstResponder()
+        
+        var phoneStr = ""
+        if isForgetPassword {
+            if self.phoneTextField.text?.count == 0 {
+                App_ZLZ_Helper.showErrorMessageAlertAutoGone("请输入手机号！")
+                return;
+            }else{
+                if !App_ZLZ_Helper.validePhoneNumber(self.phoneTextField.text!) {
+                    
+                    return;
+                }
+            }
+            phoneStr = phoneTextField.text!
+        }else{
+            /*
+             NSDictionary * dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+             */
+            let dict = UserDefaults.standard.object(forKey: "userInfo") as! NSDictionary
+            
+            phoneStr = "\(dict["phone"]!)"
+        }
+        //请求接口
+        if isForgetPassword {
+            App_ZLZ_Helper.sendData(toServerUseUrl: "msg/getVerifyCode", dataDict: ["phone":phoneStr, "Vcode":"1"], type: RequestType_Post, loadingTitle: "发送中...", sucessTitle: "发送成功！", sucessBlock: { (responseObj) in
+                self.timer?.invalidate()
+                self.timerGo()
+                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerGo), userInfo: nil, repeats: true)
+            }) { (error) in
+                
+            }
+        }else{
+            App_ZLZ_Helper.sendData(toServerUseUrl: "msg/getVerifyCode", dataDict: ["phone":phoneStr, "Vcode":"2"], type: RequestType_Post, loadingTitle: "发送中...", sucessTitle: "发送成功！", sucessBlock: { (responseObj) in
+                self.timer?.invalidate()
+                self.timerGo()
+                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerGo), userInfo: nil, repeats: true)
+            }) { (error) in
+                
+            }
+        }
+    }
+    
+    @objc func timerGo(){
+        totolSeconds = totolSeconds - 1;
+        if totolSeconds <= 0 {
+            timer?.invalidate()
+            sendVerifyBtn.setTitle("获取验证码", for: UIControlState.normal)
+        }else{
+            sendVerifyBtn.setTitle("重新获取(\(totolSeconds)s)", for: UIControlState.normal)
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if range.length == 1 {
+            return true
+        }
+
+        switch string {
+        case "0","1","2","3","4","5","6","7","8","9":
+            return true
+        default:
+            return false
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

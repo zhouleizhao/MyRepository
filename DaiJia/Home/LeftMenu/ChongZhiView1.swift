@@ -1,0 +1,103 @@
+//
+//  ChongZhiView1.swift
+//  DaiJia
+//
+//  Created by MyApple on 28/07/2018.
+//  Copyright © 2018 GaoBingnan. All rights reserved.
+//
+
+import UIKit
+
+class ChongZhiView1: BaseCustomXibView,UITextFieldDelegate {
+
+    /*
+    // Only override draw() if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+    override func draw(_ rect: CGRect) {
+        // Drawing code
+    }
+    */
+    @objc var immediateRechargeBlock:((String,Bool)->())?
+    @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var valueTextField: UITextField!
+    @IBOutlet weak var weixinSelectedImageView: UIImageView!
+    @IBOutlet weak var zhifubaoSelectedImageView: UIImageView!
+    @IBOutlet weak var topAdImageView: UIImageView!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.valueTextField.delegate = self
+        
+        var tapGr = UITapGestureRecognizer.init(target: self, action: #selector(weixinSelectedViewClicked))
+        self.weixinSelectedImageView.superview?.addGestureRecognizer(tapGr)
+        
+        tapGr = UITapGestureRecognizer.init(target: self, action: #selector(zhifubaoSelectedViewClicked))
+        self.zhifubaoSelectedImageView.superview?.addGestureRecognizer(tapGr)
+        
+        weixinSelectedImageView.isHighlighted = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    @IBAction func numberBtnClicked(_ sender: UIButton) {
+        switch sender.tag {
+        case 1:
+            self.valueTextField.text = "100"
+            break
+        case 2:
+            self.valueTextField.text = "200"
+            break
+        case 3:
+            self.valueTextField.text = "500"
+            break
+        case 4:
+            self.valueTextField.text = "1000"
+            break
+        default:
+            break
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        print("replacementString = \(string), \(textField.text!)")
+        if "\(string)".count == 0 && textField.text!.count == 1 {
+            return true
+        }
+        
+        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        let expression = "^\\-?([1-9]\\d*|0)(\\.\\d{0,2})?$"
+        let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+        let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+        return numberOfMatches != 0
+    }
+    
+    @objc func weixinSelectedViewClicked() {
+        weixinSelectedImageView.isHighlighted = !weixinSelectedImageView.isHighlighted
+        
+        zhifubaoSelectedImageView.isHighlighted = !weixinSelectedImageView.isHighlighted
+    }
+    @objc func zhifubaoSelectedViewClicked() {
+        zhifubaoSelectedImageView.isHighlighted = !zhifubaoSelectedImageView.isHighlighted
+        
+        weixinSelectedImageView.isHighlighted = !zhifubaoSelectedImageView.isHighlighted
+    }
+    @IBAction func goRechargeBtnClicked(_ sender: Any) {
+        
+        if valueTextField.text!.count == 0{
+            
+            App_ZLZ_Helper.showErrorMessageAlertAutoGone("请输入充值金额！")
+            return
+        }
+        
+        var isAlipay = false
+        if zhifubaoSelectedImageView.isHighlighted == true {
+            isAlipay = true
+        }
+        
+        immediateRechargeBlock?(self.valueTextField.text!, isAlipay)
+    }
+    
+}

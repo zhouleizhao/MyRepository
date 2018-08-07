@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddImageSubView" customModule="QuickDog" customModuleProvider="target">
+            <connections>
+                <outlet property="albumBtn" destination="lAR-gY-keG" id="MBp-U7-pHc"/>
+                <outlet property="cancelBtn" destination="9p4-QG-Rvv" id="S66-Sr-ZS4"/>
+                <outlet property="shotBtn" destination="cPp-bV-PDT" id="P9I-Jk-Usx"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Tu-d0-cfi">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <connections>
+                        <action selector="backBtnClicked:" destination="-1" eventType="touchUpInside" id="mxw-1D-36c"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Cv-hO-eC6">
+                    <rect key="frame" x="0.0" y="472" width="375" height="195"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAR-gY-keG">
+                            <rect key="frame" x="25" y="20" width="325" height="40"/>
+                            <color key="backgroundColor" red="1" green="0.61176470589999998" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="cOr-7n-gQh"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                            <state key="normal" title="相册">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPp-bV-PDT">
+                            <rect key="frame" x="25" y="75" width="325" height="40"/>
+                            <color key="backgroundColor" red="1" green="0.61176470589999998" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="nxz-Vt-2tt"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                            <state key="normal" title="拍照">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9p4-QG-Rvv">
+                            <rect key="frame" x="25" y="135" width="325" height="40"/>
+                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="vw1-h8-GdL"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="9p4-QG-Rvv" firstAttribute="leading" secondItem="3Cv-hO-eC6" secondAttribute="leading" constant="25" id="7k3-3J-3l9"/>
+                        <constraint firstItem="9p4-QG-Rvv" firstAttribute="top" secondItem="cPp-bV-PDT" secondAttribute="bottom" constant="20" id="CAb-uh-CFl"/>
+                        <constraint firstItem="cPp-bV-PDT" firstAttribute="leading" secondItem="3Cv-hO-eC6" secondAttribute="leading" constant="25" id="Ew3-rc-RgF"/>
+                        <constraint firstAttribute="trailing" secondItem="9p4-QG-Rvv" secondAttribute="trailing" constant="25" id="J9W-oD-pp5"/>
+                        <constraint firstItem="lAR-gY-keG" firstAttribute="leading" secondItem="3Cv-hO-eC6" secondAttribute="leading" constant="25" id="L16-wq-DwB"/>
+                        <constraint firstAttribute="height" constant="195" id="QGF-Mc-wjN"/>
+                        <constraint firstAttribute="trailing" secondItem="cPp-bV-PDT" secondAttribute="trailing" constant="25" id="d3L-44-yfx"/>
+                        <constraint firstItem="cPp-bV-PDT" firstAttribute="top" secondItem="lAR-gY-keG" secondAttribute="bottom" constant="15" id="dOs-G1-fFP"/>
+                        <constraint firstAttribute="bottom" secondItem="9p4-QG-Rvv" secondAttribute="bottom" constant="20" id="e1v-Ub-xep"/>
+                        <constraint firstAttribute="trailing" secondItem="lAR-gY-keG" secondAttribute="trailing" constant="25" id="uke-Qx-kJN"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="3Cv-hO-eC6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="GoA-94-dTi"/>
+                <constraint firstItem="2Tu-d0-cfi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HYX-h8-nHn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2Tu-d0-cfi" secondAttribute="bottom" id="OGs-Ph-qxT"/>
+                <constraint firstAttribute="trailing" secondItem="2Tu-d0-cfi" secondAttribute="trailing" id="UNM-xD-NNl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3Cv-hO-eC6" secondAttribute="bottom" id="icQ-lG-id2"/>
+                <constraint firstItem="2Tu-d0-cfi" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="lS0-2y-YzY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3Cv-hO-eC6" secondAttribute="trailing" id="m7Z-PQ-SJh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="32.5" y="103.5"/>
+        </view>
+    </objects>
+</document>

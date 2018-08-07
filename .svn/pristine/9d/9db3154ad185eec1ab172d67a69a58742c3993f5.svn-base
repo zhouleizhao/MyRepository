@@ -1,0 +1,55 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - Alamofire (4.3.0)
+  - GTSDK (2.2.0.0-noidfa)
+  - IQKeyboardManager (6.1.0)
+  - Kingfisher (4.5.0)
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.1.0)
+  - MJRefresh (3.1.15.3)
+  - SDWebImage (4.4.1):
+    - SDWebImage/Core (= 4.4.1)
+  - SDWebImage/Core (4.4.1)
+  - SnapKit (3.2.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - Alamofire (~> 4.3.0)
+  - GTSDK (= 2.2.0.0-noidfa)
+  - IQKeyboardManager
+  - Kingfisher (= 4.5.0)
+  - Masonry
+  - MBProgressHUD
+  - MJRefresh
+  - SDWebImage
+  - SnapKit (= 3.2.0)
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  GTSDK: 2cb8f5df1fbb250f596698443edd0191f77024f1
+  IQKeyboardManager: f520b0f411eaefa08058532cb50c48bfeffa8535
+  Kingfisher: 26ae0473102b77b575da51960c932431e3745407
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+
+PODFILE CHECKSUM: 6205632ab7db45956a1b8a052cb6ed4ed8bdcf9a
+
+COCOAPODS: 1.4.0
