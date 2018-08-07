@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		121AE77E21198C740078299B /* ApplyDaiJiaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AE77D21198C740078299B /* ApplyDaiJiaoViewController.swift */; };
 		12DA39B5211013790043B86D /* CommonAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA39B3211013790043B86D /* CommonAddressViewController.swift */; };
 		12DA39B6211013790043B86D /* CommonAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12DA39B4211013790043B86D /* CommonAddressViewController.xib */; };
 		12DA39BD21104E830043B86D /* PayPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA39BB21104E830043B86D /* PayPasswordViewController.swift */; };
@@ -65,7 +66,6 @@
 		6C1B851B2111801D0051CC7B /* YouHuiQuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B851A2111801D0051CC7B /* YouHuiQuanViewController.m */; };
 		6C1B851F211181350051CC7B /* YouHuiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B851D211181350051CC7B /* YouHuiTableViewCell.m */; };
 		6C1B8520211181350051CC7B /* YouHuiTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C1B851E211181350051CC7B /* YouHuiTableViewCell.xib */; };
-		6C221EA9211928E900C7DC24 /* ApplyDaiJiaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C221EA7211928E900C7DC24 /* ApplyDaiJiaoViewController.m */; };
 		6C221EAA211928E900C7DC24 /* ApplyDaiJiaoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C221EA8211928E900C7DC24 /* ApplyDaiJiaoViewController.xib */; };
 		6C3EC98520CB7634007EBD09 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C3EC98420CB7634007EBD09 /* HomeViewController.m */; };
 		6C3EC98820CB7D9B007EBD09 /* GenerationDrivingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C3EC98720CB7D9B007EBD09 /* GenerationDrivingViewController.m */; };
@@ -182,6 +182,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		121AE77D21198C740078299B /* ApplyDaiJiaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyDaiJiaoViewController.swift; sourceTree = "<group>"; };
 		12DA39B3211013790043B86D /* CommonAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAddressViewController.swift; sourceTree = "<group>"; };
 		12DA39B4211013790043B86D /* CommonAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonAddressViewController.xib; sourceTree = "<group>"; };
 		12DA39BB21104E830043B86D /* PayPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPasswordViewController.swift; sourceTree = "<group>"; };
@@ -256,8 +257,6 @@
 		6C1B851C211181350051CC7B /* YouHuiTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouHuiTableViewCell.h; sourceTree = "<group>"; };
 		6C1B851D211181350051CC7B /* YouHuiTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouHuiTableViewCell.m; sourceTree = "<group>"; };
 		6C1B851E211181350051CC7B /* YouHuiTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YouHuiTableViewCell.xib; sourceTree = "<group>"; };
-		6C221EA6211928E900C7DC24 /* ApplyDaiJiaoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyDaiJiaoViewController.h; sourceTree = "<group>"; };
-		6C221EA7211928E900C7DC24 /* ApplyDaiJiaoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplyDaiJiaoViewController.m; sourceTree = "<group>"; };
 		6C221EA8211928E900C7DC24 /* ApplyDaiJiaoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplyDaiJiaoViewController.xib; sourceTree = "<group>"; };
 		6C3EC98320CB7634007EBD09 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		6C3EC98420CB7634007EBD09 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -642,8 +641,7 @@
 				6C9DB67E20CF674B00210FC0 /* PreferentialViewController.m */,
 				6C9DB68020CF676700210FC0 /* MyAccountViewController.h */,
 				6C9DB68120CF676700210FC0 /* MyAccountViewController.m */,
-				6C221EA6211928E900C7DC24 /* ApplyDaiJiaoViewController.h */,
-				6C221EA7211928E900C7DC24 /* ApplyDaiJiaoViewController.m */,
+				121AE77D21198C740078299B /* ApplyDaiJiaoViewController.swift */,
 				6C221EA8211928E900C7DC24 /* ApplyDaiJiaoViewController.xib */,
 				6CEEB10021086671008BE8C0 /* SetUpPayPasswordViewController.swift */,
 				6CEEB10121086672008BE8C0 /* SetUpPayPasswordViewController.xib */,
@@ -1183,6 +1181,7 @@
 				6CFDBB7620CA89B600BC2120 /* CustomNavigationViewController.m in Sources */,
 				6C9DB67720CF5ACE00210FC0 /* LeftHeaderView.m in Sources */,
 				6CEEB0EA21070F98008BE8C0 /* BaseCustomXibView.swift in Sources */,
+				121AE77E21198C740078299B /* ApplyDaiJiaoViewController.swift in Sources */,
 				6C1B851B2111801D0051CC7B /* YouHuiQuanViewController.m in Sources */,
 				12DA39C021105D260043B86D /* MiddleAddressView.swift in Sources */,
 				6C9DB68D20CF9A9A00210FC0 /* ZhangHuView.m in Sources */,
@@ -1202,7 +1201,6 @@
 				6CEEB0D02105C8F0008BE8C0 /* GeTuiHelper.m in Sources */,
 				6CA8CA30210AF034003AB8F8 /* DCDataPickerView.m in Sources */,
 				6CFDBB4420CA67AC00BC2120 /* AppDelegate.m in Sources */,
-				6C221EA9211928E900C7DC24 /* ApplyDaiJiaoViewController.m in Sources */,
 				6CEEB0CA2105789E008BE8C0 /* CustomSearchView.m in Sources */,
 				6CEEB10721099D42008BE8C0 /* PayPageViewController.m in Sources */,
 				12E44B17210B168900D452DF /* WXApiResponseHandler.m in Sources */,
