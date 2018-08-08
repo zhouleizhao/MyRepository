@@ -155,6 +155,9 @@
         hud.hidden = YES;
         if ([[NSString stringWithFormat:@"%@",responseObject[@"status"]] isEqualToString:@"1"]) {
             
+            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"data"] forKey:@"userInfo"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
             if (((NSString *)responseObject[@"data"][@"registerName"]).length == 0) {
                 
                 [MBProgressHUD showSuccess:@"登录成功，请完善资料！" toView:self.view];
@@ -163,17 +166,12 @@
                 cwvc.isPerfectInfo = true;
                 cwvc.completeBlock = ^{
 
-                    [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"data"] forKey:@"userInfo"];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
-                    
                     [self.navigationController popViewControllerAnimated:YES];
                 };
                 
                 [self.navigationController pushViewController:cwvc animated:true];
             }else{
-                
-                [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"data"] forKey:@"userInfo"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
+
                 [MBProgressHUD showSuccess:@"登录成功" toView:self.view];
                 [self.navigationController popViewControllerAnimated:YES];
             }

@@ -15,6 +15,7 @@
 #import "DaiJiaThreeBottomView.h"
 #import "DCDataPickerView.h"
 #import <JhtMarquee/JhtHorizontalMarquee.h>
+#import "ChengWeiViewController.h"
 //#import "BaiduMapLocationManager.h"
 
 @interface NearbyViewController () <BMKMapViewDelegate, UIGestureRecognizerDelegate, BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate,UITextFieldDelegate,DCDatePickerViewDelegate> {
@@ -220,7 +221,7 @@
             }else if ([[NSString stringWithFormat:@"%@",arr[0][@"type"]] isEqualToString:@"3"]){
                 str = @"代叫";
             }else if ([[NSString stringWithFormat:@"%@",arr[0][@"type"]] isEqualToString:@"4"]){
-                str = @"司机主动下订单";
+                str = @"司机主动下的";
             }
             [ChooseAlertView showChooseViewWithTitle:@"温馨提示" ContentText:[NSString stringWithFormat:@"您有未完成%@订单，是否进入？",str] SureAction:^{
                 if ([str isEqualToString:@"代驾"] || [str isEqualToString:@"预约"] || [str isEqualToString:@"司机主动下订单"]) {
@@ -268,7 +269,7 @@
     
     //处理代叫
     GETUSERINFO
-    if ([userInfo[@"isNo"] isEqualToString:@"0"]) {
+    if (userInfo == nil || [[NSString stringWithFormat:@"%@", userInfo[@"isNo"]] isEqualToString:@"0"]) {
         self.twoItemsView.hidden = false;
         self.threeItemsView.hidden = true;
     }else{
@@ -292,10 +293,29 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftView];
     [leftView addGestureRecognizer:tap];
 }
-//抽屉按钮
-- (void)leftClick{
+- (void)checkUserInfoName:(void(^)())block {
     NSDictionary * userInfo = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
     if (userInfo) {
+        
+        if (((NSString *)userInfo[@"registerName"]).length == 0) {
+            ChengWeiViewController * cwvc = [[ChengWeiViewController alloc] init];
+            cwvc.isPerfectInfo = true;
+            cwvc.completeBlock = ^{
+                
+                block();
+            };
+            [self.navigationController pushViewController:cwvc animated:true];
+        }else{
+            block();
+        }
+    }else{
+        [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+    }
+}
+//抽屉按钮
+- (void)leftClick{
+    
+    [self checkUserInfoName:^{
         AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
         if (tempAppDelegate.leftSlideVC.closed){
@@ -304,6 +324,30 @@
         }
         else{
             [tempAppDelegate.leftSlideVC closeLeftView];
+        }
+    }];
+    
+    return;
+    
+    NSDictionary * userInfo = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+    if (userInfo) {
+        
+        if (((NSString *)userInfo[@"registerName"]).length == 0) {
+            ChengWeiViewController * cwvc = [[ChengWeiViewController alloc] init];
+            cwvc.isPerfectInfo = true;
+            cwvc.completeBlock = ^{
+                
+                AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                
+                if (tempAppDelegate.leftSlideVC.closed){
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshHeader" object:nil];
+                    [tempAppDelegate.leftSlideVC openLeftView];
+                }
+                else{
+                    [tempAppDelegate.leftSlideVC closeLeftView];
+                }
+            };
+            [self.navigationController pushViewController:cwvc animated:true];
         }
     }else{
         [self.navigationController pushViewController:[LoginViewController new] animated:YES];

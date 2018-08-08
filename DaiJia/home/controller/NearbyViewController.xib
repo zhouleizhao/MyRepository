@@ -18,12 +18,13 @@
                 <outlet property="mapViewBottomConstraint" destination="v00-7a-ddW" id="wrX-JJ-HuA"/>
                 <outlet property="oneLabel" destination="BFW-Je-ST6" id="mhg-wb-ltJ"/>
                 <outlet property="reduceView" destination="awz-Ts-Dtm" id="ncK-Yg-esz"/>
-                <outlet property="threeBottomLineView" destination="ar6-AU-45v" id="DgN-dh-GF4"/>
+                <outlet property="threeBottomLineView" destination="iTI-ym-QsD" id="2lT-gM-qgc"/>
                 <outlet property="threeItemsView" destination="lBO-Js-axd" id="ndp-WT-LF1"/>
                 <outlet property="threeLabel" destination="uO8-fV-wAh" id="sxQ-8i-X6Y"/>
                 <outlet property="topViewHeight" destination="sKY-qX-B2K" id="Wk9-Rd-qug"/>
                 <outlet property="twoBottomLineView" destination="gmA-1T-7qg" id="syv-se-7d0"/>
                 <outlet property="twoItemsView" destination="Vtk-yQ-inl" id="bdz-Bj-OEZ"/>
+                <outlet property="twoLabel" destination="TXC-gP-eVV" id="FnD-fJ-ckP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

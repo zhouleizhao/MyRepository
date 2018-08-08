@@ -59,18 +59,18 @@
 }
 - (void)nextBtnClicked{
     
-    if (self.nanButton.selected == false && self.nvButton.selected == false) {
-        
-        [App_ZLZ_Helper showErrorMessageAlertAutoGone:@"请选择性别！"];
-        return;
-    }
-    
     if (self.nameTextField.text.length == 0) {
         
         [App_ZLZ_Helper showErrorMessageAlertAutoGone:@"请输入名字！"];
         return;
     }
     
+    if (self.nanButton.selected == false && self.nvButton.selected == false) {
+        
+        [App_ZLZ_Helper showErrorMessageAlertAutoGone:@"请选择性别！"];
+        return;
+    }
+
     [self rightClick];
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

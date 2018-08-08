@@ -109,7 +109,7 @@
         cell.imageView.image = [UIImage imageNamed:@"account"];
         
         GETUSERINFO
-        if ([userInfo[@"isNo"] isEqualToString:@"1"]) {
+        if ([[NSString stringWithFormat:@"%@", userInfo[@"isNo"]] isEqualToString:@"1"]) {
             cell.textLabel.text = @"修改代叫地址";
         }
     }
@@ -203,7 +203,7 @@
     }else if (indexPath.row == 4){
         ApplyDaiJiaoViewController * djvc = [ApplyDaiJiaoViewController new];
         GETUSERINFO
-        if ([userInfo[@"isNo"] isEqualToString:@"0"]) {
+        if ([[NSString stringWithFormat:@"%@", userInfo[@"isNo"]] isEqualToString:@"0"]) {
             djvc.title = @"申请代叫";
         }else{
             djvc.title = @"修改代叫地址";
