@@ -16,11 +16,11 @@
 /**关闭键盘*/
 #define CLOUSEKEYBOARD  [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 ////服务器地址192.168.3.176:8080
-#define SERVICE @"http://192.168.3.176:8080/"
-//#define SERVICE @"http://119.28.62.82:8081/" //13731187167
+//#define SERVICE @"http://192.168.3.176:8080/"
+#define SERVICE @"http://119.28.62.82:8081/" //13731187167
 //图片地址
-//#define IMAGEURL @"http://119.28.62.82:8081/profile/"
-#define IMAGEURL @"http://192.168.3.176:8080/profile/"
+#define IMAGEURL @"http://119.28.62.82:8081/profile/"
+//#define IMAGEURL @"http://192.168.3.176:8080/profile/"
 //获取沙河个人资料
 #define GETUSERINFO NSUserDefaults * user = [NSUserDefaults standardUserDefaults];NSDictionary * userInfo = [user objectForKey:@"userInfo"];
 #define BAIDU_MAP_APPKEY @"7LP1FigNWW3A7z66X7VUs3sj0oQQ7EaT"
