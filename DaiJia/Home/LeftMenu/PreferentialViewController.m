@@ -34,7 +34,8 @@
     self.zhangHuView = zhanghu;
     //[self loadData];
     // Do any additional setup after loading the view.
-    [self.zhangHuView.daijiaoCashLabel.superview addGestureRecognizer:[[UIGestureRecognizer alloc] initWithTarget:self action:@selector(daijiaoCashViewClicked)]];
+    [self.zhangHuView.daijiaoCashLabel.superview addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(daijiaoCashViewClicked)]];
+    self.zhangHuView.daijiaoCashLabel.superview.hidden = true;
 }
 - (void)daijiaoCashViewClicked {
     NSLog(@"代叫提现界面！");
@@ -53,9 +54,7 @@
     } failedBlock:^(NSError *) {
         
     }];
-    
-    self.zhangHuView.daijiaoCashLabel.superview.hidden = true;
-    
+
     [App_ZLZ_Helper sendDataToServerUseUrl:@"user/commission/page" dataDict:@{} type:RequestType_Post loadingTitle:@"" sucessTitle:@"" sucessBlock:^(NSDictionary * responseObj) {
         
         self.zhangHuView.daijiaoCashLabel.superview.hidden = false;
