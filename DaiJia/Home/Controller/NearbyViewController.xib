@@ -14,13 +14,17 @@
             <connections>
                 <outlet property="bottomLineView" destination="RM2-Td-Mdl" id="aEZ-NN-AXN"/>
                 <outlet property="enlargeView" destination="HzB-DM-agd" id="aac-mb-CGK"/>
+                <outlet property="leftLabel" destination="BFW-Je-ST6" id="D6Z-zQ-MAo"/>
+                <outlet property="leftLineView" destination="gin-Ch-YOL" id="82B-bq-6BM"/>
                 <outlet property="mapView" destination="cT7-vI-2hp" id="ung-rd-51o"/>
                 <outlet property="mapViewBottomConstraint" destination="v00-7a-ddW" id="wrX-JJ-HuA"/>
-                <outlet property="oneLabel" destination="BFW-Je-ST6" id="mhg-wb-ltJ"/>
+                <outlet property="oneLabel" destination="Rz9-bS-ldg" id="c11-gq-ON5"/>
                 <outlet property="reduceView" destination="awz-Ts-Dtm" id="ncK-Yg-esz"/>
+                <outlet property="rightLabel" destination="uO8-fV-wAh" id="2jQ-Fg-sjm"/>
+                <outlet property="rightLineView" destination="ar6-AU-45v" id="V9C-ke-TAX"/>
                 <outlet property="threeBottomLineView" destination="iTI-ym-QsD" id="2lT-gM-qgc"/>
                 <outlet property="threeItemsView" destination="lBO-Js-axd" id="ndp-WT-LF1"/>
-                <outlet property="threeLabel" destination="uO8-fV-wAh" id="sxQ-8i-X6Y"/>
+                <outlet property="threeLabel" destination="dot-w9-Qn8" id="jDJ-xm-IDa"/>
                 <outlet property="topViewHeight" destination="sKY-qX-B2K" id="Wk9-Rd-qug"/>
                 <outlet property="twoBottomLineView" destination="gmA-1T-7qg" id="syv-se-7d0"/>
                 <outlet property="twoItemsView" destination="Vtk-yQ-inl" id="bdz-Bj-OEZ"/>

@@ -52,6 +52,12 @@
 @property (nonatomic,assign)CLLocationCoordinate2D daiJiaoLocation;//代叫起点经纬度
 @property (weak, nonatomic) IBOutlet UIView *twoItemsView;
 @property (weak, nonatomic) IBOutlet UIView *threeItemsView;
+
+
+@property (weak, nonatomic) IBOutlet UIView *leftLineView;
+@property (weak, nonatomic) IBOutlet UIView *rightLineView;
+@property (weak, nonatomic) IBOutlet UILabel *leftLabel;
+@property (weak, nonatomic) IBOutlet UIView *rightLabel;
 @end
 
 @implementation NearbyViewController
@@ -117,6 +123,7 @@
     self.isRefresh = YES;
     self.twoBottomLineView.hidden = YES;
     self.threeBottomLineView.hidden = YES;
+    self.rightLineView.hidden = true;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeClick) name:@"closeLeft" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openClick) name:@"openLeft" object:nil];
     
@@ -392,6 +399,8 @@
     self.oneLabel.hidden = NO;
     self.twoLabel.hidden = NO;
     self.threeLabel.hidden = NO;
+    self.leftLabel.hidden = NO;
+    self.rightLabel.hidden = NO;
     isFirstComeIn = true;
     self.oneBottomView.endLocationTextField.text = @"";
     self.oneBottomView.leftImage1.hidden = NO;
@@ -729,6 +738,10 @@
     self.bottomLineView.hidden = NO;
     self.twoBottomLineView.hidden = YES;
     self.threeBottomLineView.hidden = YES;
+    
+    self.leftLineView.hidden = false;
+    self.rightLineView.hidden = true;
+    
     //逻辑
     [self.mapView setCenterCoordinate:_locationService.userLocation.location.coordinate animated:YES];
     self.twoBottomView.hidden = YES;
@@ -802,6 +815,10 @@
     self.bottomLineView.hidden = YES;
     self.twoBottomLineView.hidden = YES;
     self.threeBottomLineView.hidden = NO;
+    
+    self.leftLineView.hidden = true;
+    self.rightLineView.hidden = false;
+    
     //逻辑
     [self.mapView setCenterCoordinate:_locationService.userLocation.location.coordinate animated:YES];
     if (self.isRefresh) {
@@ -936,6 +953,8 @@
         self.oneLabel.hidden = YES;
         self.twoLabel.hidden = YES;
         self.threeLabel.hidden = YES;
+        self.leftLabel.hidden = YES;
+        self.rightLabel.hidden = YES;
         [self setNewNav];
         //计算最小经纬度和最大经纬度两点之间的距离
         int dictance = [self getDistance:lat lon:lon];//单位好像是米
@@ -978,6 +997,8 @@
         self.oneLabel.hidden = YES;
         self.twoLabel.hidden = YES;
         self.threeLabel.hidden = YES;
+        self.leftLabel.hidden = YES;
+        self.rightLabel.hidden = YES;
         [self setNewNav];
         //计算最小经纬度和最大经纬度两点之间的距离
         int dictance = [self getDistance:lat lon:lon];//单位好像是米
@@ -1204,6 +1225,8 @@
         self.oneLabel.hidden = YES;
         self.twoLabel.hidden = YES;
         self.threeLabel.hidden = YES;
+        self.leftLabel.hidden = YES;
+        self.rightLabel.hidden = YES;
 //        [self setNewNav];
         //计算最小经纬度和最大经纬度两点之间的距离
         int dictance = [self getDistance:lat lon:lon];//单位好像是米
@@ -1332,6 +1355,8 @@
         self.oneLabel.hidden = YES;
         self.twoLabel.hidden = YES;
         self.threeLabel.hidden = YES;
+        self.leftLabel.hidden = YES;
+        self.rightLabel.hidden = YES;
         [self setNewNav];
         //计算最小经纬度和最大经纬度两点之间的距离
         int dictance = [self getDistance:lat lon:lon];//单位好像是米
@@ -1377,6 +1402,8 @@
         self.oneLabel.hidden = YES;
         self.twoLabel.hidden = YES;
         self.threeLabel.hidden = YES;
+        self.leftLabel.hidden = YES;
+        self.rightLabel.hidden = YES;
         [self setNewNav];
         //计算最小经纬度和最大经纬度两点之间的距离
         int dictance = [self getDistance:lat lon:lon];//单位好像是米
