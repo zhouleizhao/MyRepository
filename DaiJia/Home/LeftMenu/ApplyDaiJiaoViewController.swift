@@ -19,6 +19,9 @@ class ApplyDaiJiaoViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         //self.title = "申请代叫"
+        
+        let tapGr = UITapGestureRecognizer.init(target: self, action: #selector(addressClicked))
+        self.addressTextField.superview?.addGestureRecognizer(tapGr)
     }
     
     @objc func addressClicked() {
