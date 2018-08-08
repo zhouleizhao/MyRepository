@@ -201,6 +201,7 @@
         }];*/
         
     }else if (indexPath.row == 4){
+        
         ApplyDaiJiaoViewController * djvc = [ApplyDaiJiaoViewController new];
         
         GETUSERINFO
@@ -209,6 +210,8 @@
         }else{
             djvc.title = @"申请代叫";
         }
+        
+        djvc.contentTableView = self.tableView;
         
         [tempAppDelegate.mainNC pushViewController:djvc animated:NO];
     }

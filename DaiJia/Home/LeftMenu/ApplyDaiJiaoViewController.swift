@@ -25,7 +25,11 @@ class ApplyDaiJiaoViewController: UIViewController {
     }
     
     @objc func addressClicked() {
+        
+        self.nameTextField.resignFirstResponder()
+        
         let savc = SearchAddressViewController()
+        savc.isShowCommonAddress = false
         savc.selectedRowBlock = {info, latitude, longitude, isEnd in
             self._latitude = "\(latitude)"
             self._longitude = "\(longitude)"
@@ -49,10 +53,10 @@ class ApplyDaiJiaoViewController: UIViewController {
             return
         }
         
-        App_ZLZ_Helper.sendData(toServerUseUrl: "user/calledAddress/modify", dataDict: ["address":self.addressTextField.text!, "latitude":self._latitude, "longitude":self._longitude], type: RequestType_Post, loadingTitle: "申请中...", sucessTitle: "申请成功！", sucessBlock: { (responseObj) in
+        App_ZLZ_Helper.sendData(toServerUseUrl: "user/calledAddress/modify", dataDict: ["name":nameTextField.text!,"address":self.addressTextField.text!, "latitude":self._latitude, "longitude":self._longitude], type: RequestType_Post, loadingTitle: "申请中...", sucessTitle: "申请成功！", sucessBlock: { (responseObj) in
             
             let muDict = NSMutableDictionary.init(dictionary: App_ZLZ_Helper.getUSERINFO())
-            muDict.setValue("1", forKey: "isNo")
+            muDict.setValue("2", forKey: "isNo")
             UserDefaults.standard.setValue(muDict, forKey: "userInfo")
             UserDefaults.standard.synchronize()
             

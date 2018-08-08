@@ -22,7 +22,7 @@ class WithdrawCashViewController: BaseSwiftViewController,UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "提现"
+        self.title = "佣金提现"
         
         cashValueTextField.delegate = self
         

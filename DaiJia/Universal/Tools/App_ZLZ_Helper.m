@@ -58,6 +58,11 @@ App_ZLZ_Helper * app_zlz_helper = nil;
     return VERIFY_CODE_INTERVAL;
 }
 
++ (NSDictionary *)getUSERINFO {
+    GETUSERINFO
+    return userInfo;
+}
+
 //根据省份证号获取年龄
 +(NSString *)getIdentityCardAge:(NSString *)numberStr
 {
