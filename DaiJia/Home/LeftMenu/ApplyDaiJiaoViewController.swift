@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ApplyDaiJiaoViewController: UIViewController {
+class ApplyDaiJiaoViewController: BaseSwiftViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var applyBtn: UIButton!
     @objc var contentTableView:UITableView?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,24 @@ class ApplyDaiJiaoViewController: UIViewController {
         
         let tapGr = UITapGestureRecognizer.init(target: self, action: #selector(addressClicked))
         self.addressTextField.superview?.addGestureRecognizer(tapGr)
+        
+        if self.title == "修改代叫地址" {
+            self.requestDataFromServer()
+            self.applyBtn.setTitle("修改", for: .normal)
+        }
+    }
+    
+    override func requestDataFromServer() {
+        App_ZLZ_Helper.sendData(toServerUseUrl: "user/calledAddress/list", dataDict: [:], type: RequestType_Post, loadingTitle: "", sucessTitle: "", sucessBlock: { (responseObj) in
+            
+            let dict = responseObj!["data"] as! NSDictionary
+            self.nameTextField.text = "\(dict["name"]!)"
+            self.addressTextField.text = "\(dict["calladdress"]!)"
+            self._latitude = "\(dict["latitude"]!)"
+            self._longitude = "\(dict["longitude"]!)"
+        }) { (error) in
+            
+        }
     }
     
     @objc func addressClicked() {

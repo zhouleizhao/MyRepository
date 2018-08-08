@@ -30,7 +30,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写支付宝账户对应的真实姓名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I2G-Tg-JTb">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写支付宝账户真实姓名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I2G-Tg-JTb">
                             <rect key="frame" x="93.5" y="0.0" width="221.5" height="38"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>

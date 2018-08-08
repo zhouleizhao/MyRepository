@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ApplyDaiJiaoViewController">
             <connections>
                 <outlet property="addressTextField" destination="SsN-oT-eWV" id="NU0-fo-psq"/>
+                <outlet property="applyBtn" destination="qms-VQ-LDd" id="0BK-Zf-onv"/>
                 <outlet property="nameTextField" destination="hCc-sp-oe5" id="qPT-3q-vHj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
