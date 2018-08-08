@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NearbyViewController">
             <connections>
-                <outlet property="bottomLineView" destination="gin-Ch-YOL" id="786-cP-pQ6"/>
+                <outlet property="bottomLineView" destination="RM2-Td-Mdl" id="aEZ-NN-AXN"/>
                 <outlet property="enlargeView" destination="HzB-DM-agd" id="aac-mb-CGK"/>
                 <outlet property="mapView" destination="cT7-vI-2hp" id="ung-rd-51o"/>
                 <outlet property="mapViewBottomConstraint" destination="v00-7a-ddW" id="wrX-JJ-HuA"/>
