@@ -44,8 +44,7 @@
     wcvc.totalCash = arr.firstObject;
     [self.navigationController pushViewController:wcvc animated:true];
 }
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
     [self loadData];
 }
 - (void)loadData{

@@ -7,23 +7,16 @@
 //
 
 import UIKit
-import SnapKit
 
 class WithdrawCashViewController: BaseSwiftViewController,UITextFieldDelegate {
-    @IBOutlet weak var zfbNameLabel: UITextField!
-    @IBOutlet weak var zfbAccountLabel: UITextField!
     @IBOutlet weak var bankLogoImageView: UIImageView!
     @IBOutlet weak var bankNameLabel: UILabel!
     @IBOutlet weak var cashValueTextField: UITextField!
     @IBOutlet weak var walletCashLabel: UILabel!
-    @IBOutlet weak var withDrawBtn: UIButton!
-    @IBOutlet weak var hintLabel: UILabel!
     
     @objc var totalCash:String = ""
     var bankLogoStr:String = ""
     var bankNameStr:String = ""
-    
-    private let minValue:Float = 0.1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,20 +29,6 @@ class WithdrawCashViewController: BaseSwiftViewController,UITextFieldDelegate {
         //self.requestDataFromServer()
         
         self.walletCashLabel.text = "佣金余额¥" + totalCash + "，"
-        hintLabel.text = "佣金余额大于" + "\(minValue)" + "元才可以提现"
-        
-        let str = totalCash as NSString
-        if str.floatValue < minValue {
-            
-            let v = UIView.init(frame: .zero)
-            v.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.7)
-            self.withDrawBtn.addSubview(v)
-            v.snp.makeConstraints { (maker) in
-                maker.edges.equalToSuperview()
-            }
-            
-            self.withDrawBtn.isEnabled = false
-        }
     }
     
     private var allCash = ""
@@ -73,7 +52,7 @@ class WithdrawCashViewController: BaseSwiftViewController,UITextFieldDelegate {
     func goWithdraw(str:String) {
         //提现
         print("请求服务器提现！")
-        App_ZLZ_Helper.sendData(toServerUseUrl: "user/commission/apply", dataDict: ["amount":self.cashValueTextField.text!, "transPwd":str, "zfbAccount":self.zfbAccountLabel.text!, "zfbName":self.zfbNameLabel.text!], type: RequestType_Post, loadingTitle: "申请中...", sucessTitle: "", sucessBlock: { (responseObj) in
+        App_ZLZ_Helper.sendData(toServerUseUrl: "withdraw/apply", dataDict: ["amount":self.cashValueTextField.text!, "transPwd":str], type: RequestType_Post, loadingTitle: "申请中...", sucessTitle: "", sucessBlock: { (responseObj) in
             
             App_ZLZ_Helper.showErrorMessageAlert("申请成功，请耐心等待！")
             self.navigationController?.popViewController(animated: true)
@@ -96,24 +75,12 @@ class WithdrawCashViewController: BaseSwiftViewController,UITextFieldDelegate {
     }
     @IBAction func withdrawBtnClicked(_ sender: Any) {
         
-        if zfbNameLabel.text!.count == 0 {
-            
-            App_ZLZ_Helper.showErrorMessageAlertAutoGone("请输入真实姓名！")
-            return
-        }
-        
-        if zfbAccountLabel.text!.count == 0 {
-            
-            App_ZLZ_Helper.showErrorMessageAlertAutoGone("请输入支付宝账号！")
-            return
-        }
-        
         if cashValueTextField.text!.count == 0 {
             
             App_ZLZ_Helper.showErrorMessageAlertAutoGone("请输入提现金额！")
             return
         }
-
+        
         App_ZLZ_Helper.sendData(toServerUseUrl: "user/transPwd/isHasPwd", dataDict: [:], type: RequestType_Post, loadingTitle: "加载中...", sucessTitle: "", sucessBlock: { (responseObj) in
             
             let str = "\(responseObj!["data"]!)"
