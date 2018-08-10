@@ -66,6 +66,7 @@ class ChongZhiViewController: UIViewController {
                     }else{
                         
                         print("微信支付正在开发中...")
+                        App_ZLZ_Helper.showErrorMessageAlert("微信支付正在开发中，暂无法使用！")
                     }
 
                 }
