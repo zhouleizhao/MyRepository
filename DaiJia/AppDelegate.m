@@ -28,6 +28,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self initBaiDuMap];
+    [self initWeixinPay];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.mainNC = [[CustomNavigationViewController alloc] initWithRootViewController:[NearbyViewController new]];
     LeftSortViewController * leftSoutVC = [[LeftSortViewController alloc]init];
@@ -61,6 +62,10 @@
     if (!ret) {
         NSLog(@"manager start failed!");
     }
+}
+- (void)initWeixinPay{
+    
+    [[WXApiManager sharedManager] registerWinxin];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
