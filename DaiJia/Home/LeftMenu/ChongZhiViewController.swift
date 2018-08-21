@@ -65,8 +65,45 @@ class ChongZhiViewController: UIViewController {
                         }, hintTitle: "充值", cashValue: valueStr)
                     }else{
                         
-                        print("微信支付正在开发中...")
-                        App_ZLZ_Helper.showErrorMessageAlert("微信支付正在开发中，暂无法使用！")
+                        if (!WXApi.isWXAppInstalled()) {
+                            App_ZLZ_Helper.showErrorMessageAlert("您尚未安装微信，无法支付！")
+                            return
+                        }
+                        
+                        InputPayPasswordView.showPopView(completeBlock: { (str) in
+                            //提现
+                            print("请求服务器充值！")
+                            App_ZLZ_Helper.sendData(toServerUseUrl: "user/wx/recharge", dataDict: ["amount":valueStr, "transPwd":str], type: RequestType_Post, loadingTitle: "充值中...", sucessTitle: "", sucessBlock: { (responseObj) in
+                                
+                                /*
+                                 "data":{
+                                 "appid":"wxfd5b5ad8494ed239",
+                                 "noncestr":"r8JFOnQYtzoe1N2e",
+                                 "package":"Sign=WXPay",
+                                 "partnerid":"1511816971",
+                                 "prepayid":"wx14103048397443485a7cc3b40258181896",
+                                 "sign":"552D67EEE6F5A7565245F31F10677D95",
+                                 "timestamp":1534213848
+                                 }
+                                 */
+                                let dataDict = responseObj?["data"] as! NSDictionary
+                                let mudict:NSMutableDictionary = NSMutableDictionary()
+                                mudict.setValue("\(dataDict["partnerid"]!)", forKey: "partnerId")
+                                mudict.setValue("\(dataDict["prepayid"]!)", forKey: "prepayId")
+                                mudict.setValue("\(dataDict["packageX"]!)", forKey: "package")
+                                mudict.setValue("\(dataDict["noncestr"]!)", forKey: "nonceStr")
+                                mudict.setValue("\(dataDict["timestamp"]!)", forKey: "timeStamp")
+                                mudict.setValue("\(dataDict["sign"]!)", forKey: "sign")
+                                WXApiManager.shared().pay(usingData: mudict as! [AnyHashable : Any])
+                                
+                                NotificationCenter.default.addObserver(self, selector: #selector(self.winXinPaySuccess), name: NSNotification.Name.init(WINXIN_PAY_SUCCESS), object: nil)
+                                NotificationCenter.default.addObserver(self, selector: #selector(self.winXinPayFailed), name: NSNotification.Name.init(WINXIN_PAY_FAILED), object: nil)
+                                
+                            }, failedBlock: { (error) in
+                                
+                            })
+                            
+                        }, hintTitle: "充值", cashValue: valueStr)
                     }
 
                 }
@@ -86,6 +123,14 @@ class ChongZhiViewController: UIViewController {
          */
         
         self.getAdData()
+    }
+    
+    
+    @objc func winXinPaySuccess() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    @objc func winXinPayFailed() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func getAdData() {

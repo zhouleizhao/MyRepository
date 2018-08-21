@@ -15,4 +15,6 @@
 #import "App_ZLZ_Helper.h"
 #import "MBProgressHUD+MJ.h"
 #import "ChooseAlertView.h"
+#import "WXApi.h"
+#import "WXApiManager.h"
 
