@@ -10,6 +10,22 @@
 		121AE77E21198C740078299B /* ApplyDaiJiaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AE77D21198C740078299B /* ApplyDaiJiaoViewController.swift */; };
 		121AE781211ACC7F0078299B /* WithdrawCashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 121AE77F211ACC7E0078299B /* WithdrawCashViewController.xib */; };
 		121AE782211ACC7F0078299B /* WithdrawCashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AE780211ACC7E0078299B /* WithdrawCashViewController.swift */; };
+		124E6C4C2150F7C400FAF776 /* DrawBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124E6C4A2150F7C100FAF776 /* DrawBillViewController.swift */; };
+		124E6C4D2150F7C400FAF776 /* DrawBillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 124E6C4B2150F7C100FAF776 /* DrawBillViewController.xib */; };
+		124E6C812153348B00FAF776 /* BasePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 124E6C6E2153348B00FAF776 /* BasePickerView.m */; };
+		124E6C822153348B00FAF776 /* Community.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 124E6C6F2153348B00FAF776 /* Community.sqlite */; };
+		124E6C832153348B00FAF776 /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 124E6C712153348B00FAF776 /* DataBaseManager.m */; };
+		124E6C842153348B00FAF776 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 124E6C752153348B00FAF776 /* FMDatabase.m */; };
+		124E6C852153348B00FAF776 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 124E6C772153348B00FAF776 /* FMDatabaseAdditions.m */; };
+		124E6C862153348B00FAF776 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 124E6C792153348B00FAF776 /* FMDatabasePool.m */; };
+		124E6C872153348B00FAF776 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 124E6C7B2153348B00FAF776 /* FMDatabaseQueue.m */; };
+		124E6C882153348B00FAF776 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 124E6C7E2153348B00FAF776 /* FMResultSet.m */; };
+		124E6C892153348B00FAF776 /* JWAddressPickerView1.m in Sources */ = {isa = PBXBuildFile; fileRef = 124E6C802153348B00FAF776 /* JWAddressPickerView1.m */; };
+		1288E24F2134FF7500CEEF96 /* CheckAppVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1288E24E2134FF7500CEEF96 /* CheckAppVersionManager.m */; };
+		1288E277213E5DAC00CEEF96 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1288E267213E5DAC00CEEF96 /* SettingViewController.swift */; };
+		1288E278213E5DAC00CEEF96 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1288E268213E5DAC00CEEF96 /* SettingViewController.xib */; };
+		1288E27B213E84C900CEEF96 /* FeedBackOrComplainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1288E279213E84C800CEEF96 /* FeedBackOrComplainViewController.swift */; };
+		1288E27C213E84C900CEEF96 /* FeedBackOrComplainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1288E27A213E84C900CEEF96 /* FeedBackOrComplainViewController.xib */; };
 		12DA39B5211013790043B86D /* CommonAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA39B3211013790043B86D /* CommonAddressViewController.swift */; };
 		12DA39B6211013790043B86D /* CommonAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12DA39B4211013790043B86D /* CommonAddressViewController.xib */; };
 		12DA39BD21104E830043B86D /* PayPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA39BB21104E830043B86D /* PayPasswordViewController.swift */; };
@@ -52,7 +68,6 @@
 		12F4DD4F20E5E48B0050558D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F4DD4E20E5E48B0050558D /* Security.framework */; };
 		12F4DD5120E5E49D0050558D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F4DD5020E5E49D0050558D /* libsqlite3.0.tbd */; };
 		12F4DD5320E5E4A50050558D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F4DD5220E5E4A50050558D /* CoreTelephony.framework */; };
-		12F4DD5520E5E4B10050558D /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F4DD5420E5E4B10050558D /* libstdc++.6.0.9.tbd */; };
 		12F4DD5720E5E5530050558D /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 12F4DD5620E5E5530050558D /* mapapi.bundle */; };
 		12F4DD5920E5E6060050558D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F4DD5820E5E6050050558D /* MobileCoreServices.framework */; };
 		12F4DD6B20E6085D0050558D /* App_ZLZ_Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4DD5D20E6085D0050558D /* App_ZLZ_Helper.m */; };
@@ -96,6 +111,10 @@
 		6CA8CA35210B2606003AB8F8 /* DaiJiaTwoBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CA8CA34210B2606003AB8F8 /* DaiJiaTwoBottomView.xib */; };
 		6CA8CA38210B31D4003AB8F8 /* DaiJiaThreeBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8CA37210B31D4003AB8F8 /* DaiJiaThreeBottomView.m */; };
 		6CA8CA3A210B31DF003AB8F8 /* DaiJiaThreeBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CA8CA39210B31DF003AB8F8 /* DaiJiaThreeBottomView.xib */; };
+		6CC7A96B2133F1A400AD1D1C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC7A96A2133F1A300AD1D1C /* WebViewController.m */; };
+		6CC7A9722133F1CF00AD1D1C /* MyTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC7A96E2133F1CE00AD1D1C /* MyTimePickerView.m */; };
+		6CC7A9732133F1CF00AD1D1C /* MyTimePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CC7A96F2133F1CE00AD1D1C /* MyTimePickerView.xib */; };
+		6CC7A9742133F1CF00AD1D1C /* MyTimeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC7A9712133F1CE00AD1D1C /* MyTimeTool.m */; };
 		6CEEB0BB2105789E008BE8C0 /* adress_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CEEB09F2105789E008BE8C0 /* adress_selected.png */; };
 		6CEEB0BC2105789E008BE8C0 /* close_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CEEB0A02105789E008BE8C0 /* close_new.png */; };
 		6CEEB0BD2105789E008BE8C0 /* location_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CEEB0A12105789E008BE8C0 /* location_search.png */; };
@@ -187,6 +206,33 @@
 		121AE77D21198C740078299B /* ApplyDaiJiaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyDaiJiaoViewController.swift; sourceTree = "<group>"; };
 		121AE77F211ACC7E0078299B /* WithdrawCashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WithdrawCashViewController.xib; sourceTree = "<group>"; };
 		121AE780211ACC7E0078299B /* WithdrawCashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithdrawCashViewController.swift; sourceTree = "<group>"; };
+		124E6C4A2150F7C100FAF776 /* DrawBillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawBillViewController.swift; sourceTree = "<group>"; };
+		124E6C4B2150F7C100FAF776 /* DrawBillViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawBillViewController.xib; sourceTree = "<group>"; };
+		124E6C6D2153348B00FAF776 /* BasePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePickerView.h; sourceTree = "<group>"; };
+		124E6C6E2153348B00FAF776 /* BasePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePickerView.m; sourceTree = "<group>"; };
+		124E6C6F2153348B00FAF776 /* Community.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Community.sqlite; sourceTree = "<group>"; };
+		124E6C702153348B00FAF776 /* DataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseManager.h; sourceTree = "<group>"; };
+		124E6C712153348B00FAF776 /* DataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseManager.m; sourceTree = "<group>"; };
+		124E6C742153348B00FAF776 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		124E6C752153348B00FAF776 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		124E6C762153348B00FAF776 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		124E6C772153348B00FAF776 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		124E6C782153348B00FAF776 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		124E6C792153348B00FAF776 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		124E6C7A2153348B00FAF776 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		124E6C7B2153348B00FAF776 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		124E6C7C2153348B00FAF776 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		124E6C7D2153348B00FAF776 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		124E6C7E2153348B00FAF776 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		124E6C7F2153348B00FAF776 /* JWAddressPickerView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWAddressPickerView1.h; sourceTree = "<group>"; };
+		124E6C802153348B00FAF776 /* JWAddressPickerView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWAddressPickerView1.m; sourceTree = "<group>"; };
+		124E6C8A215337EC00FAF776 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		1288E24D2134FF7500CEEF96 /* CheckAppVersionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckAppVersionManager.h; sourceTree = "<group>"; };
+		1288E24E2134FF7500CEEF96 /* CheckAppVersionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckAppVersionManager.m; sourceTree = "<group>"; };
+		1288E267213E5DAC00CEEF96 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		1288E268213E5DAC00CEEF96 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		1288E279213E84C800CEEF96 /* FeedBackOrComplainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackOrComplainViewController.swift; sourceTree = "<group>"; };
+		1288E27A213E84C900CEEF96 /* FeedBackOrComplainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedBackOrComplainViewController.xib; sourceTree = "<group>"; };
 		12DA39B3211013790043B86D /* CommonAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAddressViewController.swift; sourceTree = "<group>"; };
 		12DA39B4211013790043B86D /* CommonAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonAddressViewController.xib; sourceTree = "<group>"; };
 		12DA39BB21104E830043B86D /* PayPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPasswordViewController.swift; sourceTree = "<group>"; };
@@ -306,6 +352,13 @@
 		6CA8CA36210B31D4003AB8F8 /* DaiJiaThreeBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DaiJiaThreeBottomView.h; sourceTree = "<group>"; };
 		6CA8CA37210B31D4003AB8F8 /* DaiJiaThreeBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaiJiaThreeBottomView.m; sourceTree = "<group>"; };
 		6CA8CA39210B31DF003AB8F8 /* DaiJiaThreeBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaiJiaThreeBottomView.xib; sourceTree = "<group>"; };
+		6CC7A9692133F1A200AD1D1C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		6CC7A96A2133F1A300AD1D1C /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		6CC7A96D2133F1CE00AD1D1C /* MyTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTimePickerView.h; sourceTree = "<group>"; };
+		6CC7A96E2133F1CE00AD1D1C /* MyTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTimePickerView.m; sourceTree = "<group>"; };
+		6CC7A96F2133F1CE00AD1D1C /* MyTimePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTimePickerView.xib; sourceTree = "<group>"; };
+		6CC7A9702133F1CE00AD1D1C /* MyTimeTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTimeTool.h; sourceTree = "<group>"; };
+		6CC7A9712133F1CE00AD1D1C /* MyTimeTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTimeTool.m; sourceTree = "<group>"; };
 		6CEEB09F2105789E008BE8C0 /* adress_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adress_selected.png; sourceTree = "<group>"; };
 		6CEEB0A02105789E008BE8C0 /* close_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_new.png; sourceTree = "<group>"; };
 		6CEEB0A12105789E008BE8C0 /* location_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_search.png; sourceTree = "<group>"; };
@@ -398,11 +451,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12F4DD5120E5E49D0050558D /* libsqlite3.0.tbd in Frameworks */,
 				12E44B1B210B19ED00D452DF /* CoreMotion.framework in Frameworks */,
 				12F4DD5920E5E6060050558D /* MobileCoreServices.framework in Frameworks */,
-				12F4DD5520E5E4B10050558D /* libstdc++.6.0.9.tbd in Frameworks */,
 				12F4DD5320E5E4A50050558D /* CoreTelephony.framework in Frameworks */,
-				12F4DD5120E5E49D0050558D /* libsqlite3.0.tbd in Frameworks */,
 				12F4DD4F20E5E48B0050558D /* Security.framework in Frameworks */,
 				12F4DD4D20E5E4830050558D /* CoreGraphics.framework in Frameworks */,
 				12F4DD4B20E5E4790050558D /* SystemConfiguration.framework in Frameworks */,
@@ -446,6 +498,7 @@
 		0F3BD33958C0C243326CCA9C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				124E6C8A215337EC00FAF776 /* libsqlite3.tbd */,
 				12E44B1A210B19ED00D452DF /* CoreMotion.framework */,
 				12F4DD5820E5E6050050558D /* MobileCoreServices.framework */,
 				12F4DD5420E5E4B10050558D /* libstdc++.6.0.9.tbd */,
@@ -460,6 +513,77 @@
 				27341FC45E4428928FCEC0CA /* Pods_DaiJia.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		124E6C6C2153348B00FAF776 /* AdressPicker */ = {
+			isa = PBXGroup;
+			children = (
+				124E6C6D2153348B00FAF776 /* BasePickerView.h */,
+				124E6C6E2153348B00FAF776 /* BasePickerView.m */,
+				124E6C6F2153348B00FAF776 /* Community.sqlite */,
+				124E6C702153348B00FAF776 /* DataBaseManager.h */,
+				124E6C712153348B00FAF776 /* DataBaseManager.m */,
+				124E6C722153348B00FAF776 /* fmdb */,
+				124E6C7F2153348B00FAF776 /* JWAddressPickerView1.h */,
+				124E6C802153348B00FAF776 /* JWAddressPickerView1.m */,
+			);
+			path = AdressPicker;
+			sourceTree = "<group>";
+		};
+		124E6C722153348B00FAF776 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				124E6C732153348B00FAF776 /* fmdb */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
+		124E6C732153348B00FAF776 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				124E6C742153348B00FAF776 /* FMDatabase.h */,
+				124E6C752153348B00FAF776 /* FMDatabase.m */,
+				124E6C762153348B00FAF776 /* FMDatabaseAdditions.h */,
+				124E6C772153348B00FAF776 /* FMDatabaseAdditions.m */,
+				124E6C782153348B00FAF776 /* FMDatabasePool.h */,
+				124E6C792153348B00FAF776 /* FMDatabasePool.m */,
+				124E6C7A2153348B00FAF776 /* FMDatabaseQueue.h */,
+				124E6C7B2153348B00FAF776 /* FMDatabaseQueue.m */,
+				124E6C7C2153348B00FAF776 /* FMDB.h */,
+				124E6C7D2153348B00FAF776 /* FMResultSet.h */,
+				124E6C7E2153348B00FAF776 /* FMResultSet.m */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
+		1288E24C2134FF7500CEEF96 /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				1288E24D2134FF7500CEEF96 /* CheckAppVersionManager.h */,
+				1288E24E2134FF7500CEEF96 /* CheckAppVersionManager.m */,
+			);
+			path = Version;
+			sourceTree = "<group>";
+		};
+		1288E256213E5DAC00CEEF96 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				1288E279213E84C800CEEF96 /* FeedBackOrComplainViewController.swift */,
+				1288E27A213E84C900CEEF96 /* FeedBackOrComplainViewController.xib */,
+				1288E257213E5DAC00CEEF96 /* Setting */,
+				1288E267213E5DAC00CEEF96 /* SettingViewController.swift */,
+				1288E268213E5DAC00CEEF96 /* SettingViewController.xib */,
+				124E6C4A2150F7C100FAF776 /* DrawBillViewController.swift */,
+				124E6C4B2150F7C100FAF776 /* DrawBillViewController.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		1288E257213E5DAC00CEEF96 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		12DA39C621114A200043B86D /* PayPassword */ = {
@@ -563,6 +687,8 @@
 		12F4DD5A20E608450050558D /* Universal */ = {
 			isa = PBXGroup;
 			children = (
+				124E6C6C2153348B00FAF776 /* AdressPicker */,
+				1288E24C2134FF7500CEEF96 /* Version */,
 				12DA39CB2111CCF50043B86D /* Marquee */,
 				6CEEB0CF2105C8F0008BE8C0 /* GeTuiHelper.h */,
 				6CEEB0CE2105C8EF008BE8C0 /* GeTuiHelper.m */,
@@ -586,6 +712,7 @@
 		12F4DD5B20E6085D0050558D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6CC7A96C2133F1CE00AD1D1C /* timepickerview */,
 				6CEEB1142109D5AF008BE8C0 /* TPPasswordTextView */,
 				6CEEB0F12108472A008BE8C0 /* KYSPickerView */,
 				12F4DD5C20E6085D0050558D /* App_ZLZ_Helper.h */,
@@ -630,6 +757,8 @@
 		6C3EC98F20CE7F67007EBD09 /* LeftMenu */ = {
 			isa = PBXGroup;
 			children = (
+				6CC7A9692133F1A200AD1D1C /* WebViewController.h */,
+				6CC7A96A2133F1A300AD1D1C /* WebViewController.m */,
 				12DA39C621114A200043B86D /* PayPassword */,
 				12E44B20210C1EA900D452DF /* Recharge */,
 				6C3EC99420CE7F85007EBD09 /* LeftSlideViewController.h */,
@@ -659,8 +788,8 @@
 				6CEEB0FD210848E3008BE8C0 /* ChengWeiViewController.xib */,
 				6C9DB68320CF77AE00210FC0 /* OrderTableViewCell.h */,
 				6C9DB68420CF77AE00210FC0 /* OrderTableViewCell.m */,
-				6C9DB68520CF77AE00210FC0 /* OrderTableViewCell.xib */,
 				6C1B851C211181350051CC7B /* YouHuiTableViewCell.h */,
+				6C9DB68520CF77AE00210FC0 /* OrderTableViewCell.xib */,
 				6C1B851D211181350051CC7B /* YouHuiTableViewCell.m */,
 				6C1B851E211181350051CC7B /* YouHuiTableViewCell.xib */,
 				6C9DB68B20CF9A9A00210FC0 /* ZhangHuView.h */,
@@ -688,6 +817,18 @@
 				6C96ED5120EF63E800BB1B05 /* custom_config_黑夜 */,
 			);
 			path = files;
+			sourceTree = "<group>";
+		};
+		6CC7A96C2133F1CE00AD1D1C /* timepickerview */ = {
+			isa = PBXGroup;
+			children = (
+				6CC7A96D2133F1CE00AD1D1C /* MyTimePickerView.h */,
+				6CC7A96E2133F1CE00AD1D1C /* MyTimePickerView.m */,
+				6CC7A96F2133F1CE00AD1D1C /* MyTimePickerView.xib */,
+				6CC7A9702133F1CE00AD1D1C /* MyTimeTool.h */,
+				6CC7A9712133F1CE00AD1D1C /* MyTimeTool.m */,
+			);
+			path = timepickerview;
 			sourceTree = "<group>";
 		};
 		6CEEB09E2105789E008BE8C0 /* Search */ = {
@@ -799,6 +940,7 @@
 		6CFDBB4120CA67AC00BC2120 /* DaiJia */ = {
 			isa = PBXGroup;
 			children = (
+				1288E256213E5DAC00CEEF96 /* Setting */,
 				12F4DD5A20E608450050558D /* Universal */,
 				6CFDBB7B20CA8B2A00BC2120 /* Home */,
 				6CFDBB7F20CA8B2A00BC2120 /* Log */,
@@ -1042,11 +1184,13 @@
 				6CEEB0BB2105789E008BE8C0 /* adress_selected.png in Resources */,
 				6C9DB68F20CF9AA600210FC0 /* ZhangHuView.xib in Resources */,
 				12F4DD5720E5E5530050558D /* mapapi.bundle in Resources */,
+				124E6C822153348B00FAF776 /* Community.sqlite in Resources */,
 				6C1B8520211181350051CC7B /* YouHuiTableViewCell.xib in Resources */,
 				6CEEB0FF210848E3008BE8C0 /* ChengWeiViewController.xib in Resources */,
 				12F4DD6F20E6085D0050558D /* ChooseAlertView.xib in Resources */,
 				6C9DB69720CFB50800210FC0 /* ChongZhiView1.xib in Resources */,
 				6CEEB0F0210825D7008BE8C0 /* AddImageSubView.xib in Resources */,
+				6CC7A9732133F1CF00AD1D1C /* MyTimePickerView.xib in Resources */,
 				6CEEB0E821070F20008BE8C0 /* DriverView.xib in Resources */,
 				12E44B19210B168900D452DF /* README.txt in Resources */,
 				6CEEB10321086673008BE8C0 /* SetUpPayPasswordViewController.xib in Resources */,
@@ -1054,6 +1198,7 @@
 				12F4DD2F20E5DE940050558D /* DaiJiaBottomView.xib in Resources */,
 				12DA39CA21114A200043B86D /* ForgetPasswordViewController.xib in Resources */,
 				12DA39B6211013790043B86D /* CommonAddressViewController.xib in Resources */,
+				1288E27C213E84C900CEEF96 /* FeedBackOrComplainViewController.xib in Resources */,
 				6C96ED4C20EF5E0B00BB1B05 /* NearbyViewController.xib in Resources */,
 				6CEEB0DF2106C67B008BE8C0 /* SendSingleViewController.xib in Resources */,
 				6CEEB0BC2105789E008BE8C0 /* close_new.png in Resources */,
@@ -1075,10 +1220,12 @@
 				6C9DB68720CF77AE00210FC0 /* OrderTableViewCell.xib in Resources */,
 				121AE781211ACC7F0078299B /* WithdrawCashViewController.xib in Resources */,
 				6CEEB0C12105789E008BE8C0 /* SearchResultTableViewCell.xib in Resources */,
+				124E6C4D2150F7C400FAF776 /* DrawBillViewController.xib in Resources */,
 				6CEEB0DA2105DFD8008BE8C0 /* AccountView1.xib in Resources */,
 				12E44B13210B168900D452DF /* AlipaySDK.bundle in Resources */,
 				6CEEB0D52105DC5A008BE8C0 /* AccountView.xib in Resources */,
 				6CEEB0BF2105789E008BE8C0 /* search_gray.png in Resources */,
+				1288E278213E5DAC00CEEF96 /* SettingViewController.xib in Resources */,
 				6CEEB0BE2105789E008BE8C0 /* location_selected.png in Resources */,
 				6CEEB1102109CC9E008BE8C0 /* PlaceholderTextView.xib in Resources */,
 				12E44B24210C1EA900D452DF /* InputPayPasswordView.xib in Resources */,
@@ -1176,6 +1323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				124E6C892153348B00FAF776 /* JWAddressPickerView1.m in Sources */,
 				12E44B1D210C164500D452DF /* ChongZhiView1.swift in Sources */,
 				6CFDBB4720CA67AC00BC2120 /* ViewController.m in Sources */,
 				6CEEB0D82105DFC9008BE8C0 /* AccountView1.m in Sources */,
@@ -1183,19 +1331,25 @@
 				6CEEB0F72108472A008BE8C0 /* KYSPickerView.m in Sources */,
 				6C9DB67F20CF674B00210FC0 /* PreferentialViewController.m in Sources */,
 				6C3EC98820CB7D9B007EBD09 /* GenerationDrivingViewController.m in Sources */,
+				1288E24F2134FF7500CEEF96 /* CheckAppVersionManager.m in Sources */,
 				6CFDBB5220CA67B000BC2120 /* main.m in Sources */,
+				124E6C852153348B00FAF776 /* FMDatabaseAdditions.m in Sources */,
 				12F4DD7020E6085D0050558D /* CommonAlertView.m in Sources */,
 				6CFDBB7620CA89B600BC2120 /* CustomNavigationViewController.m in Sources */,
 				6C9DB67720CF5ACE00210FC0 /* LeftHeaderView.m in Sources */,
 				6CEEB0EA21070F98008BE8C0 /* BaseCustomXibView.swift in Sources */,
 				121AE77E21198C740078299B /* ApplyDaiJiaoViewController.swift in Sources */,
+				1288E277213E5DAC00CEEF96 /* SettingViewController.swift in Sources */,
 				121AE782211ACC7F0078299B /* WithdrawCashViewController.swift in Sources */,
+				124E6C872153348B00FAF776 /* FMDatabaseQueue.m in Sources */,
+				1288E27B213E84C900CEEF96 /* FeedBackOrComplainViewController.swift in Sources */,
 				6C1B851B2111801D0051CC7B /* YouHuiQuanViewController.m in Sources */,
 				12DA39C021105D260043B86D /* MiddleAddressView.swift in Sources */,
 				6C9DB68D20CF9A9A00210FC0 /* ZhangHuView.m in Sources */,
 				6C3EC99220CE7F7C007EBD09 /* LeftSortViewController.m in Sources */,
 				12E44B16210B168900D452DF /* WXApiRequestHandler.m in Sources */,
 				12F4DD6B20E6085D0050558D /* App_ZLZ_Helper.m in Sources */,
+				124E6C4C2150F7C400FAF776 /* DrawBillViewController.swift in Sources */,
 				12F4DD7220E6085D0050558D /* UIView+Animation.m in Sources */,
 				12F4DD7520E60A280050558D /* BaseOCViewController.m in Sources */,
 				12F4DD2C20E5DE520050558D /* DaiJiaBottomView.swift in Sources */,
@@ -1203,6 +1357,7 @@
 				6CEEB0EF210825D7008BE8C0 /* AddImageSubView.swift in Sources */,
 				12DA39C921114A200043B86D /* ForgetPasswordViewController.swift in Sources */,
 				6C1B851F211181350051CC7B /* YouHuiTableViewCell.m in Sources */,
+				6CC7A9722133F1CF00AD1D1C /* MyTimePickerView.m in Sources */,
 				6CEEB10221086673008BE8C0 /* SetUpPayPasswordViewController.swift in Sources */,
 				6C3EC98520CB7634007EBD09 /* HomeViewController.m in Sources */,
 				6CA8CA38210B31D4003AB8F8 /* DaiJiaThreeBottomView.m in Sources */,
@@ -1210,15 +1365,18 @@
 				6CA8CA30210AF034003AB8F8 /* DCDataPickerView.m in Sources */,
 				6CFDBB4420CA67AC00BC2120 /* AppDelegate.m in Sources */,
 				6CEEB0CA2105789E008BE8C0 /* CustomSearchView.m in Sources */,
+				124E6C862153348B00FAF776 /* FMDatabasePool.m in Sources */,
 				6CEEB10721099D42008BE8C0 /* PayPageViewController.m in Sources */,
 				12E44B17210B168900D452DF /* WXApiResponseHandler.m in Sources */,
 				6CEEB0C02105789E008BE8C0 /* SearchResultTableViewCell.swift in Sources */,
 				6CEEB0CD210579C4008BE8C0 /* SearchAddressViewController.swift in Sources */,
 				12E44B1F210C1C8600D452DF /* ChongZhiViewController.swift in Sources */,
+				124E6C832153348B00FAF776 /* DataBaseManager.m in Sources */,
 				6C9DB68620CF77AE00210FC0 /* OrderTableViewCell.m in Sources */,
 				6CEEB0FE210848E3008BE8C0 /* ChengWeiViewController.m in Sources */,
 				6C3EC99820CE8102007EBD09 /* OtherViewController.m in Sources */,
 				6CEEB1132109CD0E008BE8C0 /* BaseCustomLoadInXibView.swift in Sources */,
+				6CC7A9742133F1CF00AD1D1C /* MyTimeTool.m in Sources */,
 				6CEEB0CB2105789E008BE8C0 /* CustomTopView.m in Sources */,
 				6CA8CA33210B25F8003AB8F8 /* DaiJiaTwoBottomView.m in Sources */,
 				6CEEB0DE2106C67B008BE8C0 /* SendSingleViewController.m in Sources */,
@@ -1230,10 +1388,13 @@
 				12E44B15210B168900D452DF /* WXApiManager.m in Sources */,
 				12F4DD6C20E6085D0050558D /* MBProgressHUD+MJ.m in Sources */,
 				6CEEB0D32105DC48008BE8C0 /* AccountView.m in Sources */,
+				124E6C882153348B00FAF776 /* FMResultSet.m in Sources */,
 				12E44B23210C1EA900D452DF /* InputPayPasswordView.swift in Sources */,
 				12DA39B5211013790043B86D /* CommonAddressViewController.swift in Sources */,
 				6CFDBB8220CA8B7000BC2120 /* LoginViewController.m in Sources */,
+				124E6C812153348B00FAF776 /* BasePickerView.m in Sources */,
 				6CEEB0C82105789E008BE8C0 /* CityModel.m in Sources */,
+				124E6C842153348B00FAF776 /* FMDatabase.m in Sources */,
 				6CEEB1112109CC9E008BE8C0 /* PlaceholderTextView.swift in Sources */,
 				6CEEB0C62105789E008BE8C0 /* CityViewController.m in Sources */,
 				6CEEB0E621070F11008BE8C0 /* DriverView.swift in Sources */,
@@ -1243,6 +1404,7 @@
 				6CEEB0F62108472A008BE8C0 /* KYSNormalPickerView.m in Sources */,
 				6CEEB0C22105789E008BE8C0 /* SearchSubView.m in Sources */,
 				6CEEB0EC210712EA008BE8C0 /* BaseSwiftViewController.swift in Sources */,
+				6CC7A96B2133F1A400AD1D1C /* WebViewController.m in Sources */,
 				6CEEB1172109D5B0008BE8C0 /* TPPasswordTextView.m in Sources */,
 				12F4DD6E20E6085D0050558D /* ChooseAlertView.m in Sources */,
 				12F4DD6D20E6085D0050558D /* UIView+Category.m in Sources */,
@@ -1420,13 +1582,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = GRT4JMT33W;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DaiJia/SDKS/BaiduMapAPI",
 					"$(PROJECT_DIR)/DaiJia/SDKS/Pay/Alipay",
 					"$(PROJECT_DIR)/DaiJia/Universal/Marquee",
 				);
-				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DaiJia/PrefixHeader.pch";
 				INFOPLIST_FILE = DaiJia/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1456,16 +1619,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GRT4JMT33W;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DaiJia/SDKS/BaiduMapAPI",
 					"$(PROJECT_DIR)/DaiJia/SDKS/Pay/Alipay",
 					"$(PROJECT_DIR)/DaiJia/Universal/Marquee",
 				);
-				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DaiJia/PrefixHeader.pch";
 				INFOPLIST_FILE = DaiJia/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1480,7 +1644,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.daijia.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "458dc5dc-09c9-4ab6-a25f-9cb16b429c53";
+				PROVISIONING_PROFILE_SPECIFIER = kehuduankuhuceshi;
 				SWIFT_OBJC_BRIDGING_HEADER = "DaiJia/Universal/DaiJia-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

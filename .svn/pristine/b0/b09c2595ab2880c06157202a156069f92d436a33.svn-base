@@ -1,0 +1,309 @@
+//
+//  PayPageViewController.m
+//  DaiJia
+//
+//  Created by GaoBingnan on 2018/7/26.
+//  Copyright © 2018年 GaoBingnan. All rights reserved.
+//
+
+#import "PayPageViewController.h"
+#import "TPPasswordTextView.h"
+#import "EvaluationDriverViewController.h"
+#import "YouHuiQuanViewController.h"
+@interface PayPageViewController ()
+@property (nonatomic,strong)UIView * pwdBackView;
+@property (nonatomic,strong)TPPasswordTextView * passwordView;
+@property (nonatomic,assign)float keybordHeight;
+@property (nonatomic,strong)UIView * maskView;
+@property (nonatomic,strong)NSString * passwordStr;
+@property (nonatomic,strong)NSString * phoneNumber;
+@property (nonatomic,strong)NSArray * youHuiArr;
+@property (nonatomic,strong)NSString * youHuiID;
+@property (nonatomic,strong)NSString * payType;
+@end
+
+@implementation PayPageViewController
+/**
+ *  键盘弹出
+ */
+- (void)keyboardWillShow:(NSNotification *)aNotification {
+    
+    /* 获取键盘的高度 */
+    NSDictionary *userInfo = aNotification.userInfo;
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = aValue.CGRectValue;
+    self.keybordHeight = keyboardRect.size.height;
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    /* 增加监听（当键盘出现或改变时） */
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    if (self.isOrder) {
+        self.hideView.hidden = NO;
+        self.youHuiButton.enabled = NO;
+        self.title = @"订单详情";
+    }else{
+        self.title = @"支付";
+    }
+    [self getData:@""];
+    [self.driverPhoneButton addTarget:self action:@selector(phoneClick) forControlEvents:UIControlEventTouchUpInside];
+    self.pwdBackView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREENHeight+44, SCREENWidth, 64)];
+    self.pwdBackView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.pwdBackView];
+    
+    self.passwordView = [[TPPasswordTextView alloc] initWithFrame:CGRectMake(0, 20, SCREENWidth, 44)];
+    self.passwordView.elementCount = 6;
+    [self.pwdBackView addSubview:self.passwordView];
+    __weak typeof(self) typeSelf = self;
+    self.passwordView.passwordDidChangeBlock = ^(NSString *password) {
+        NSLog(@"%@",password);
+        if (password.length == 6) {
+            if ([typeSelf.payType isEqualToString:@"1"]) {
+               [typeSelf yuePay:password];
+            }else if ([typeSelf.payType isEqualToString:@"2"]){
+                [typeSelf ZFBPay:password];
+            }else if ([typeSelf.payType isEqualToString:@"3"]){
+                [typeSelf WXPay:password];
+            }
+            [typeSelf.passwordView clearPassword];
+            [UIView animateWithDuration:0.5 animations:^{
+                typeSelf.pwdBackView.frame = CGRectMake(0, SCREENHeight+64, SCREENWidth, 64);
+            }];
+        }
+    };
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWidth, 20)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:12];
+    label.textColor = [UIColor darkGrayColor];
+    label.text = @"请输入6位支付密码";
+    [self.pwdBackView addSubview:label];
+    
+    // Do any additional setup after loading the view from its nib.
+}
+- (void)phoneClick{
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.phoneNumber];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+}
+- (void)getData:(NSString *)discountID{
+    NSMutableDictionary * param = [NSMutableDictionary dictionary];
+    param[@"orderNum"] = self.orderNum;
+    param[@"discountID"] = discountID;
+    [App_ZLZ_Helper sendDataToServerUseUrl:@"user/payPage/getPayment" dataDict:param type:RequestType_Post loadingTitle:@"正在获取支付信息..." sucessTitle:@"" sucessBlock:^(NSDictionary * resObj) {
+        [self.driverImageView sd_setImageWithURLNew:[NSURL URLWithString:resObj[@"data"][@"avatar"]] placeholderImage:[UIImage imageNamed:@"logo1"]];
+        self.driverNameLabel.text = resObj[@"data"][@"name"];
+        self.phoneNumber = resObj[@"data"][@"phone"];
+        [self setStart:[[NSString stringWithFormat:@"%@",resObj[@"data"][@"starLevel"]] intValue]];
+        NSArray * arr = resObj[@"data"][@"priceList"];
+        self.allPriceLabel.text = [NSString stringWithFormat:@"%@",arr[0][@"price"]];
+        self.qiBuJiaLabel.text = [NSString stringWithFormat:@"%@",arr[1][@"price"]];
+        self.waitLabel.text = [NSString stringWithFormat:@"%@",arr[2][@"price"]];
+        self.zongLiShuLabel.text = [NSString stringWithFormat:@"%@",arr[3][@"title"]];
+        self.liChengLabel.text = [NSString stringWithFormat:@"%@",arr[4][@"price"]];
+        self.eLieLabel.text = [NSString stringWithFormat:@"%@",arr[5][@"price"]];
+        self.youHuiLabel.text = [NSString stringWithFormat:@"%@",[arr lastObject][@"price"]];
+        self.youHuiArr = resObj[@"data"][@"discount"];
+        if (!self.isOrder) {
+            [self.sendButton setTitle:[NSString stringWithFormat:@"    确认支付 %@    ",self.allPriceLabel.text] forState:UIControlStateNormal];
+        }else{
+            if ([[NSString stringWithFormat:@"%@",resObj[@"data"][@"isNo"]] isEqualToString:@"0"]) {
+                [self.sendButton setTitle:@"    去评价    " forState:UIControlStateNormal];
+            }else{
+                self.sendButton.enabled = NO;
+                [self.sendButton setTitle:@"    已评价    " forState:UIControlStateNormal];
+            }
+        }
+    } failedBlock:^(NSError *) {
+        
+    }];
+}
+- (void)yuePay:(NSString *)pwd{
+    NSDictionary * dic = [NSDictionary dictionary];
+    if (self.youHuiID) {
+        dic = @{@"orderNum":self.orderNum,@"transPwd":pwd,@"discountID":self.youHuiID};
+    }else{
+        dic = @{@"orderNum":self.orderNum,@"transPwd":pwd};
+    }
+    [App_ZLZ_Helper sendDataToServerUseUrl:@"user/blance/payment" dataDict:dic type:RequestType_Post loadingTitle:@"正在支付..." sucessTitle:@"支付成功" sucessBlock:^(NSDictionary *) {
+        EvaluationDriverViewController * vc = [EvaluationDriverViewController new];
+        vc.orderNum = self.orderNum;
+        [self.navigationController pushViewController:vc animated:YES];
+    } failedBlock:^(NSError *) {
+        [self.maskView removeFromSuperview];
+    }];
+}
+- (void)ZFBPay:(NSString *)pwd{
+    NSDictionary * dic = [NSDictionary dictionary];
+    if (self.youHuiID) {
+        dic = @{@"orderNum":self.orderNum,@"transPwd":pwd,@"discountID":self.youHuiID};
+    }else{
+        dic = @{@"orderNum":self.orderNum,@"transPwd":pwd};
+    }
+    [App_ZLZ_Helper sendDataToServerUseUrl:@"user/ali/pay" dataDict:dic type:RequestType_Post loadingTitle:@"正在支付..." sucessTitle:@"支付成功" sucessBlock:^(NSDictionary * resObj) {
+        [App_ZLZ_Helper payUseAliPay:resObj[@"data"] andResultCallBack:^(int result) {
+            if (result == 1) {
+                EvaluationDriverViewController * vc = [EvaluationDriverViewController new];
+                vc.orderNum = self.orderNum;
+                [self.navigationController pushViewController:vc animated:YES];
+            }else{
+                [self.maskView removeFromSuperview];
+                [CommonAlertView showAlertWithMessage:@"支付失败" AndTitle:@"温馨提示" Action:nil];
+            }
+        }];
+    } failedBlock:^(NSError *) {
+        [self.maskView removeFromSuperview];
+    }];
+}
+- (void)WXPay:(NSString *)pwd{
+//    [App_ZLZ_Helper sendDataToServerUseUrl:@"user/ali/pay" dataDict:@{@"orderNum":self.orderNum,@"transPwd":pwd,@"discountID":self.youHuiID} type:RequestType_Post loadingTitle:@"正在支付..." sucessTitle:@"支付成功" sucessBlock:^(NSDictionary *) {
+//        EvaluationDriverViewController * vc = [EvaluationDriverViewController new];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    } failedBlock:^(NSError *) {
+//
+//    }];
+}
+- (IBAction)payTypeClick:(UIButton *)sender {
+    if (sender == self.yuEButton) {
+        self.yuEButton.selected = YES;
+        self.weiXinButton.selected = NO;
+        self.zhiFuBaoButton.selected = NO;
+        
+    }else if (sender == self.weiXinButton){
+        self.yuEButton.selected = NO;
+        self.weiXinButton.selected = YES;
+        self.zhiFuBaoButton.selected = NO;
+    }else if (sender == self.zhiFuBaoButton){
+        self.yuEButton.selected = NO;
+        self.weiXinButton.selected = NO;
+        self.zhiFuBaoButton.selected = YES;
+    }
+}
+//选择优惠券
+- (IBAction)chooseYouHui:(UIButton *)sender {
+    
+    YouHuiQuanViewController * yjqvc = [[YouHuiQuanViewController alloc] init];
+    yjqvc.selectedRowBlock = ^(NSString * idStr, NSString * valueStr) {
+        
+        self.youHuiLabel.text = [NSString stringWithFormat:@"%@元",valueStr];
+        self.youHuiID = idStr;
+        [self getData:self.youHuiID];
+    };
+    [self.navigationController pushViewController:yjqvc animated:true];
+    return;
+    
+    NSMutableArray * arr1 = [NSMutableArray array];
+    for (int i = 0; i < self.youHuiArr.count; i ++ ) {
+        [arr1 addObject:[NSString stringWithFormat:@"%@",self.youHuiArr[i][@"balance"]]];
+    }
+    [KYSNormalPickerView KYSShowWithDataArray:@[arr1] completeBlock:^(NSArray * arr) {
+        NSString * index = arr[0];
+        if (arr1.count == 0) {
+            return;
+        }
+        self.youHuiLabel.text = [NSString stringWithFormat:@"%@元",self.youHuiArr[index.integerValue][@"balance"]];
+        self.youHuiID = self.youHuiArr[index.integerValue][@"discountID"];
+        [self getData:self.youHuiID];
+    }];
+}
+- (IBAction)sendClick:(UIButton *)sender {
+    if (self.isOrder) {
+        EvaluationDriverViewController * vc = [EvaluationDriverViewController new];
+        vc.orderNum = self.orderNum;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        if (!self.yuEButton.selected && !self.zhiFuBaoButton.selected && !self.weiXinButton.selected) {
+            [CommonAlertView showAlertWithMessage:@"请选择一种支付方式" AndTitle:@"温馨提示" Action:nil];
+            return;
+        }
+        
+        ChongZhiViewController * czvc = [[ChongZhiViewController alloc] init];
+        [czvc checkPayPasswordWithVc:self successBlock:^{
+            
+            [self.passwordView showKeyboard];
+            self.maskView = [[UIView alloc] initWithFrame:self.view.bounds];
+            self.maskView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.5];
+            [self.view insertSubview:self.maskView atIndex:self.view.subviews.count-1];
+            UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeClick)];
+            [self.maskView addGestureRecognizer:tap];
+            [UIView animateWithDuration:0.5 animations:^{
+                self.pwdBackView.frame = CGRectMake(0, SCREENHeight-self.keybordHeight -64, SCREENWidth, 64);
+            }];
+            if (self.yuEButton.selected) {
+                self.payType = @"1";
+            }else if (self.zhiFuBaoButton.selected){
+                self.payType = @"2";
+            }else if (self.weiXinButton.selected){
+                self.payType = @"3";
+            }
+        }];
+    }
+    
+    
+}
+- (void)setStart:(int)number{
+    if (number == 0) {
+        self.firstImageView.image = [UIImage imageNamed:@"assets_star1"];
+        self.twoImageView.image = [UIImage imageNamed:@"assets_star1"];
+        self.threeImageView.image = [UIImage imageNamed:@"assets_star1"];
+        self.fourImageView.image = [UIImage imageNamed:@"assets_star1"];
+        self.fiveImageView.image = [UIImage imageNamed:@"assets_star1"];
+    }else if (number == 1){
+        self.firstImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.twoImageView.image = [UIImage imageNamed:@"assets_star1"];
+        self.threeImageView.image = [UIImage imageNamed:@"assets_star1"];
+        self.fourImageView.image = [UIImage imageNamed:@"assets_star1"];
+        self.fiveImageView.image = [UIImage imageNamed:@"assets_star1"];
+    }else if (number == 2){
+        self.firstImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.twoImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.threeImageView.image = [UIImage imageNamed:@"assets_star1"];
+        self.fourImageView.image = [UIImage imageNamed:@"assets_star1"];
+        self.fiveImageView.image = [UIImage imageNamed:@"assets_star1"];
+    }else if (number == 3){
+        self.firstImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.twoImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.threeImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.fourImageView.image = [UIImage imageNamed:@"assets_star1"];
+        self.fiveImageView.image = [UIImage imageNamed:@"assets_star1"];
+    }else if (number == 4){
+        self.firstImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.twoImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.threeImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.fourImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.fiveImageView.image = [UIImage imageNamed:@"assets_star1"];
+    }else if (number == 5){
+        self.firstImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.twoImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.threeImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.fourImageView.image = [UIImage imageNamed:@"assets_star"];
+        self.fiveImageView.image = [UIImage imageNamed:@"assets_star"];
+    }
+}
+- (void)closeClick{
+    self.yuEButton.selected = NO;
+    [self.maskView removeFromSuperview];
+    [self.passwordView hideKeyboard];
+    [self.passwordView clearPassword];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.pwdBackView.frame = CGRectMake(0, SCREENHeight+64, SCREENWidth, 64);
+    }];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

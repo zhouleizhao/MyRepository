@@ -24,7 +24,7 @@
     self.view.backgroundColor = CONTROLLERCOLOR
     
     UIImageView * imageView = [[UIImageView alloc] init];
-    imageView.image = [UIImage imageNamed:@"logo"];
+    imageView.image = [UIImage imageNamed:@"logo1"];
     [self.view addSubview:imageView];
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
@@ -187,6 +187,16 @@
 }
 //点击协议
 - (void)xieYiClick{
+    
+    WebViewController * wvc = [[WebViewController alloc] init];
+    wvc.titleStr = @"使用规则与代驾协议";
+    //wvc.jieKou = @"driver/explain/14";
+    wvc.jieKou = @"user/explain/words?type=14&longitude=&latitude=";
+    [self.navigationController pushViewController:wvc animated:true];
+    return;
+    
+    
+    
     UIView * backView = [UIView new];
     backView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7];
     [self.view addSubview:backView];

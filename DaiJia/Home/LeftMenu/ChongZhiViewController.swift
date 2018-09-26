@@ -16,7 +16,7 @@ class ChongZhiViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(winXinPaySuccess), name: Notification.Name.init("PAY_SUCCESS_NOTIFICATION"), object: nil)
         self.title = "充值"
         self.view.backgroundColor = App_ZLZ_Helper.getCONTROLLERCOLOR()
         
@@ -26,7 +26,8 @@ class ChongZhiViewController: UIViewController {
         
         let view = ChongZhiView1.init(frame: CGRect.init(x: 0, y: 0, width: CGFloat(App_ZLZ_Helper.screenWidth()), height: CGFloat(App_ZLZ_Helper.screenHeight()) * 0.4 + 286))
         mainView = view;
-        view.balanceLabel.text = yuEStr
+        view.balanceLabel.text = "账户余额：￥" + yuEStr
+        view.xiYiButton.addTarget(self, action: #selector(xieYiClick), for: UIControlEvents.touchUpInside)
         view.immediateRechargeBlock = { valueStr, isAlipay in
 
             App_ZLZ_Helper.sendData(toServerUseUrl: "user/transPwd/isHasPwd", dataDict: [:], type: RequestType_Post, loadingTitle: "加载中...", sucessTitle: "", sucessBlock: { (responseObj) in
@@ -125,14 +126,19 @@ class ChongZhiViewController: UIViewController {
         self.getAdData()
     }
     
-    
     @objc func winXinPaySuccess() {
         self.navigationController?.popViewController(animated: true)
     }
     @objc func winXinPayFailed() {
         self.navigationController?.popViewController(animated: true)
     }
-    
+    @objc func xieYiClick() {
+        let web = WebViewController()
+        web.titleStr = "充值协议"
+        //web.jieKou = "driver/explain/9"
+        web.jieKou = "user/explain/words?type=9&longitude=&latitude="
+        self.navigationController?.pushViewController(web, animated: true)
+    }
     func getAdData() {
         App_ZLZ_Helper.sendData(toServerUseUrl: "user/advertising/getAdvert", dataDict: [:], type: RequestType_Post, loadingTitle: "", sucessTitle: "", sucessBlock: { (responseObj) in
             

@@ -1,0 +1,53 @@
+//
+//  DrawBillViewController.swift
+//  DaiJia
+//
+//  Created by MyApple on 2018/9/18.
+//  Copyright © 2018 GaoBingnan. All rights reserved.
+//
+
+import UIKit
+
+class DrawBillViewController: UIViewController {
+    @IBOutlet weak var invoiceTitleTextField: UITextField!
+    @IBOutlet weak var dutyParagraphyTextField: UITextField!
+    @IBOutlet weak var invoiceContentTextField: UITextField!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var moreInformationTextField: UITextField!
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var phoneLabel: UITextField!
+    @IBOutlet weak var addressLabel: UITextField!
+    @IBOutlet weak var detailAddressTextField: UITextField!
+    @IBOutlet weak var hintLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        
+        self.title = "开具发票"
+    }
+    @IBAction func addressViewClicked(_ sender: Any) {
+        
+    }
+    @IBAction func commitBtnClicked(_ sender: Any) {
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
